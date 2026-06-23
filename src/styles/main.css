@@ -174,6 +174,9 @@ em { font-style: normal; }
   font-family: var(--font-display);
 }
 .brand__mark { display: inline-flex; }
+/* LogoMark: <symbol> defined once, referenced via <use> (see index.html sprite) */
+.logomark-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.logomark { display: block; }
 .brand__word {
   font-weight: 800;
   font-size: 1.32rem;
@@ -539,6 +542,25 @@ em { font-style: normal; }
   color: var(--ink-2);
 }
 .ctrl__val { font-family: var(--font-mono); font-weight: 600; }
+.ctrl__head em {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--faint);
+  letter-spacing: 0.04em;
+  margin-top: 0.25rem;
+}
+.ctrl__rows { display: grid; gap: 0.1rem; margin-top: 0.3rem; }
+.ctrl__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--step-0);
+}
+.ctrl__row:last-child { border-bottom: none; }
+.ctrl__row > span:first-child { color: var(--ink-2); }
 .slider {
   position: relative;
   height: 6px;
@@ -696,18 +718,44 @@ em { font-style: normal; }
   align-items: start;
 }
 .founder__frame {
+  position: relative;
+  overflow: hidden;
   aspect-ratio: 4 / 5;
   border: 1px solid var(--line-2);
   border-radius: var(--radius-lg);
   background:
     repeating-linear-gradient(135deg, transparent 0 13px, rgba(245,165,36,0.04) 13px 14px),
     var(--surface);
+}
+/* real headshot — sits on top of the fallback once founder-headshot.jpg exists */
+.founder__photo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* graceful fallback shown until the photo file is added (img self-removes on error) */
+.founder__placeholder {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
+  padding: 1rem;
   text-align: center;
+}
+.founder__id { margin-top: 1.4rem; }
+.founder__name {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--step-1);
+  letter-spacing: -0.02em;
+  color: var(--ink);
 }
 .founder__initials {
   font-family: var(--font-display);
@@ -725,7 +773,7 @@ em { font-style: normal; }
 }
 .founder__facts {
   list-style: none;
-  margin: 1.4rem 0 0;
+  margin: 0.9rem 0 0;
   padding: 0;
   display: grid;
   gap: 0.55rem;

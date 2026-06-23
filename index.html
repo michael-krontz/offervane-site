@@ -56,6 +56,28 @@
     <script type="module" src="/src/main.js"></script>
   </head>
   <body>
+    <!-- =================================================================
+         LogoMark — SINGLE SOURCE OF TRUTH for the OfferVane mark.
+         TODO: replace with final weathervane SVG.
+         Swap the inner content of this <symbol> (keep id="ov-logomark";
+         keep the "0 0 48 48" viewBox or adjust the <use> sizes below) and
+         the mark updates everywhere it appears: header, footer, final CTA.
+         Separate static assets to also swap at launch:
+           public/favicon.svg  ·  public/og.png
+         ================================================================= -->
+    <svg class="logomark-sprite" aria-hidden="true" focusable="false">
+      <symbol id="ov-logomark" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="21" stroke="var(--line-2)" stroke-width="1.5" />
+        <g stroke="var(--faint)" stroke-width="1.4" stroke-linecap="round">
+          <path d="M24 7v5M24 36v5M7 24h5M36 24h5" />
+        </g>
+        <circle cx="24" cy="24" r="2.4" fill="var(--amber)" />
+        <path d="M24 24 L37 11 L31.5 16.2 L33.8 9.2 L26.8 11.5 L32 6 Z" fill="var(--amber)" />
+        <path d="M24 24 L13 35" stroke="var(--ink-2)" stroke-width="2.2" stroke-linecap="round" />
+        <circle cx="13" cy="35" r="2" fill="var(--ink-2)" />
+      </symbol>
+    </svg>
+
     <a class="skip-link" href="#problem">Skip to content</a>
 
     <!-- ============================ NAV ============================ -->
@@ -63,20 +85,7 @@
       <div class="nav__inner">
         <a class="brand" href="#top" aria-label="OfferVane home">
           <span class="brand__mark" aria-hidden="true">
-            <!-- weathervane mark -->
-            <svg viewBox="0 0 48 48" width="34" height="34" fill="none">
-              <circle cx="24" cy="24" r="21" stroke="var(--line-2)" stroke-width="1.5" />
-              <g stroke="var(--faint)" stroke-width="1.4" stroke-linecap="round">
-                <path d="M24 7v5M24 36v5M7 24h5M36 24h5" />
-              </g>
-              <circle cx="24" cy="24" r="2.4" fill="var(--amber)" />
-              <path
-                d="M24 24 L37 11 L31.5 16.2 L33.8 9.2 L26.8 11.5 L32 6 Z"
-                fill="var(--amber)"
-              />
-              <path d="M24 24 L13 35" stroke="var(--ink-2)" stroke-width="2.2" stroke-linecap="round" />
-              <circle cx="13" cy="35" r="2" fill="var(--ink-2)" />
-            </svg>
+            <svg class="logomark" width="34" height="34"><use href="#ov-logomark" /></svg>
           </span>
           <span class="brand__word">Offer<span class="brand__vane">Vane</span></span>
         </a>
@@ -101,9 +110,7 @@
         <div class="hero__grid"></div>
         <div class="wrap hero__inner">
           <div class="hero__copy">
-            <p class="eyebrow reveal">
-              <span class="tick">Just launched</span> · Instant cash offers, on your site
-            </p>
+            <p class="eyebrow reveal">Instant cash offers, on your site</p>
             <h1 class="hero__h reveal" data-delay="1">
               Give every seller an instant cash offer —
               <span class="amber-text">right on your site.</span>
@@ -323,8 +330,8 @@
             <h2 class="section__h reveal">Tune the offer to your market and your model.</h2>
             <p class="section__lede reveal">
               70% gets you a deal in one market and laughed out of another. OfferVane lets you set
-              your own offer percentage, repair assumptions, and buy box — so every offer reflects
-              how <em>you</em> actually buy. Change a number; every future offer updates.
+              your own offer percentage and your repair-cost model — by property condition — so every
+              offer reflects how <em>you</em> actually buy. Change a number; every future offer updates.
             </p>
             <p class="rules__tag reveal amber-text">Your deal. Your math.</p>
           </div>
@@ -336,22 +343,18 @@
             </figcaption>
             <div class="device__screen">
               <div class="ctrl">
-                <div class="ctrl__head"><span>Offer rule</span><span class="ctrl__val amber-text">70%</span></div>
+                <div class="ctrl__head"><span>Offer rule <em>ARV multiplier</em></span><span class="ctrl__val amber-text">70%</span></div>
                 <div class="slider"><span class="slider__fill" style="--p:70%"></span><span class="slider__knob" style="--p:70%"></span></div>
               </div>
               <div class="ctrl">
-                <div class="ctrl__head"><span>Repair baseline</span><span class="ctrl__val">$25 / sq ft</span></div>
-                <div class="slider"><span class="slider__fill" style="--p:42%"></span><span class="slider__knob" style="--p:42%"></span></div>
+                <div class="ctrl__head"><span>Repair cost <em>$/sq ft, by condition</em></span></div>
+                <div class="ctrl__rows">
+                  <div class="ctrl__row"><span>Light</span><span class="ctrl__val">$15 / sq ft</span></div>
+                  <div class="ctrl__row"><span>Moderate</span><span class="ctrl__val">$30 / sq ft</span></div>
+                  <div class="ctrl__row"><span>Heavy</span><span class="ctrl__val">$55 / sq ft</span></div>
+                </div>
               </div>
-              <div class="ctrl">
-                <div class="ctrl__head"><span>Max purchase price</span><span class="ctrl__val">$250,000</span></div>
-                <div class="slider"><span class="slider__fill" style="--p:58%"></span><span class="slider__knob" style="--p:58%"></span></div>
-              </div>
-              <div class="ctrl">
-                <div class="ctrl__head"><span>Minimum spread</span><span class="ctrl__val">$35,000</span></div>
-                <div class="slider"><span class="slider__fill" style="--p:30%"></span><span class="slider__knob" style="--p:30%"></span></div>
-              </div>
-              <p class="device__note">Example controls — set yours once, they apply to every offer.</p>
+              <p class="device__note">Example controls — the two dials the engine uses today: your ARV multiplier and your repair cost per sq ft by condition. Set them once; they apply to every offer.</p>
             </div>
           </figure>
         </div>
@@ -364,8 +367,8 @@
             <p class="eyebrow reveal">Easy install</p>
             <h2 class="section__h reveal">Copy, paste, done.</h2>
             <p class="section__lede reveal">
-              One snippet in your site's HTML. No developer, no plugin to wrangle, no rebuild.
-              It loads async, so it never slows your page down.
+              One snippet in your site's HTML. No developer, no plugin to wrangle, no rebuild —
+              drop the form wherever you want it and point it at your investor ID.
             </p>
           </header>
 
@@ -374,13 +377,15 @@
               <span class="snippet__file">index.html</span>
               <button class="snippet__copy" type="button" data-copy>Copy</button>
             </div>
-            <pre class="snippet__code"><code><span class="c-c">&lt;!-- OfferVane widget --&gt;</span>
-<span class="c-t">&lt;script</span>
-  <span class="c-a">src</span>=<span class="c-s">"https://embed.offervane.com/v1/widget.js"</span>
-  <span class="c-a">data-key</span>=<span class="c-s">"ov_live_YOUR_KEY"</span>
-  <span class="c-a">async</span><span class="c-t">&gt;&lt;/script&gt;</span>
-<span class="c-t">&lt;div</span> <span class="c-a">id</span>=<span class="c-s">"offervane"</span><span class="c-t">&gt;&lt;/div&gt;</span></code></pre>
-            <p class="snippet__note">Illustrative snippet. You'll get your own <code>data-key</code> when you start a trial.</p>
+            <pre class="snippet__code"><code><span class="c-c">&lt;!-- 1. Where the form should appear --&gt;</span>
+<span class="c-t">&lt;div</span> <span class="c-a">id</span>=<span class="c-s">"offervane-form"</span><span class="c-t">&gt;&lt;/div&gt;</span>
+
+<span class="c-c">&lt;!-- 2. Load OfferVane and mount it --&gt;</span>
+<span class="c-t">&lt;script</span> <span class="c-a">src</span>=<span class="c-s">"https://embed.offervane.com/widget.js"</span><span class="c-t">&gt;&lt;/script&gt;</span>
+<span class="c-t">&lt;script&gt;</span>
+  OfferVaneLib.mount(<span class="c-s">'offervane-form'</span>, <span class="c-s">'YOUR_INVESTOR_ID'</span>)
+<span class="c-t">&lt;/script&gt;</span></code></pre>
+            <p class="snippet__note">Illustrative — you'll get your own widget URL and <code>INVESTOR_ID</code> when you start a trial.</p>
           </div>
         </div>
       </section>
@@ -402,7 +407,7 @@
             <p class="price__free">First month free — no card games, just the trial.</p>
             <ul class="price__list">
               <li>Unlimited offers and leads</li>
-              <li>Your own offer rules, repair model, and buy box</li>
+              <li>Your own offer rule and repair-cost model</li>
               <li>Real-comp ARV on every offer</li>
               <li>Embeddable widget for any site</li>
               <li>Investor dashboard with full lead detail</li>
@@ -419,18 +424,34 @@
       <!-- ============================ FOUNDER ============================ -->
       <section class="section" id="founder">
         <div class="wrap founder">
-          <div class="founder__portrait reveal" aria-hidden="true">
-            <!-- REAL FOUNDER PHOTO GOES HERE -->
+          <figure class="founder__portrait reveal">
+            <!-- TODO: MICHAEL — add your headshot as public/founder-headshot.jpg
+                 (the fallback below shows until that file exists). -->
             <div class="founder__frame">
-              <span class="founder__initials">OV</span>
-              <span class="founder__cap">Founder photo<br />goes here</span>
+              <img
+                class="founder__photo"
+                src="founder-headshot.jpg"
+                alt="Michael Krontz, founder of OfferVane"
+                width="480"
+                height="600"
+                loading="lazy"
+                onerror="this.remove()"
+              />
+              <span class="founder__placeholder" aria-hidden="true">
+                <span class="founder__initials">MK</span>
+                <span class="founder__cap">Add founder-headshot.jpg</span>
+              </span>
             </div>
-            <ul class="founder__facts">
-              <li>20 years designing software</li>
-              <li>Active BRRRR investor</li>
-              <li>Built for his own deals first</li>
-            </ul>
-          </div>
+            <figcaption class="founder__id">
+              <!-- TODO: MICHAEL — confirm your name (also used in the signature below) -->
+              <span class="founder__name">Michael Krontz</span>
+              <ul class="founder__facts">
+                <li>20 years designing software</li>
+                <li>Active BRRRR investor</li>
+                <li>Built for his own deals first</li>
+              </ul>
+            </figcaption>
+          </figure>
 
           <div class="founder__copy">
             <p class="eyebrow reveal">Who built this</p>
@@ -452,8 +473,8 @@
               </p>
             </div>
             <p class="founder__sign reveal">
-              <!-- REAL FOUNDER NAME GOES HERE -->
-              — The founder, OfferVane
+              <!-- TODO: MICHAEL — confirm your name -->
+              — Michael Krontz, Founder of OfferVane
             </p>
           </div>
         </div>
@@ -479,11 +500,7 @@
       <section class="section finalcta">
         <div class="wrap finalcta__inner">
           <span class="finalcta__mark" aria-hidden="true">
-            <svg viewBox="0 0 64 64" width="56" height="56" fill="none">
-              <circle cx="32" cy="32" r="29" stroke="var(--amber-deep)" stroke-width="1.5" />
-              <path d="M32 32 L52 17 L44 23 L48 12 L37 18 L46 8 Z" fill="var(--amber)" />
-              <circle cx="32" cy="32" r="3.5" fill="var(--amber-bright)" />
-            </svg>
+            <svg class="logomark" width="56" height="56"><use href="#ov-logomark" /></svg>
           </span>
           <h2 class="finalcta__h reveal">Start your free trial.</h2>
           <p class="finalcta__p reveal">
@@ -500,7 +517,12 @@
     <footer class="footer">
       <div class="wrap footer__inner">
         <div class="footer__brand">
-          <span class="brand__word">Offer<span class="brand__vane">Vane</span></span>
+          <a class="brand" href="#top" aria-label="OfferVane home">
+            <span class="brand__mark" aria-hidden="true">
+              <svg class="logomark" width="30" height="30"><use href="#ov-logomark" /></svg>
+            </span>
+            <span class="brand__word">Offer<span class="brand__vane">Vane</span></span>
+          </a>
           <p>Instant cash offers on your site. Built by an investor, for investors. Just launched in 2026.</p>
         </div>
         <nav class="footer__cols" aria-label="Footer">
