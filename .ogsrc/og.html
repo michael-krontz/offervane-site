@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;800&family=JetBrains+Mono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { margin: 0; box-sizing: border-box; }
+      html, body { width: 1200px; height: 630px; }
+      body {
+        font-family: "Hanken Grotesk", system-ui, sans-serif;
+        background:
+          radial-gradient(60% 90% at 88% -10%, rgba(245,165,36,0.18), transparent 60%),
+          #0C0B09;
+        color: #F4EFE4;
+        padding: 84px 90px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+      }
+      .grid {
+        position: absolute; inset: 0;
+        background-image:
+          linear-gradient(#2C2820 1px, transparent 1px),
+          linear-gradient(90deg, #2C2820 1px, transparent 1px);
+        background-size: 70px 70px;
+        -webkit-mask-image: radial-gradient(70% 80% at 80% 10%, #000, transparent 70%);
+        opacity: 0.5;
+      }
+      .top { display: flex; align-items: center; gap: 16px; position: relative; }
+      .word { font-weight: 800; font-size: 38px; letter-spacing: -0.03em; }
+      .vane { color: #F5A524; }
+      h1 {
+        position: relative;
+        font-weight: 800;
+        font-size: 78px;
+        line-height: 1.02;
+        letter-spacing: -0.025em;
+        max-width: 18ch;
+      }
+      h1 .a { color: #F5A524; }
+      .foot {
+        position: relative;
+        display: flex; align-items: center; justify-content: space-between;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 21px; color: #9E988A; letter-spacing: 0.02em;
+      }
+      .pill {
+        color: #F5A524; border: 1px solid rgba(245,165,36,0.4);
+        background: rgba(245,165,36,0.12); padding: 8px 18px; border-radius: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid"></div>
+    <div class="top">
+      <svg viewBox="0 0 48 48" width="48" height="48" fill="none">
+        <circle cx="24" cy="24" r="21" stroke="#3A3527" stroke-width="1.5"/>
+        <path d="M24 24 L38 11 L31.5 16.6 L34.5 8.5 L26.4 11.5 L33 5 Z" fill="#F5A524"/>
+        <path d="M24 24 L12 35" stroke="#D8D1C2" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="24" cy="24" r="2.8" fill="#FFC766"/>
+      </svg>
+      <span class="word">Offer<span class="vane">Vane</span></span>
+    </div>
+    <h1>Give every seller an instant cash offer <span class="a">— right on your site.</span></h1>
+    <div class="foot">
+      <span>Built by an investor, for investors.</span>
+      <span class="pill">Just launched</span>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+/* =============================================================================
+   OfferVane — Design Tokens
+   Standalone COPY of the app's visual DNA (amber-on-charcoal). This file is the
+   site's own source of truth; it does NOT import from or reference the app.
+   Warm near-black foundation + a single disciplined amber signature accent.
+   ========================================================================== */
+
+:root {
+  /* ---- Foundation: warm charcoal / near-black ---------------------------- */
+  --bg:        #0C0B09;  /* page base — warm near-black so amber reads native */
+  --bg-2:      #131109;  /* raised bands / alternating sections               */
+  --surface:   #1A1711;  /* cards, panels                                     */
+  --surface-2: #221E16;  /* nested surfaces, inputs                           */
+  --line:      #2C2820;  /* hairline borders, warm                            */
+  --line-2:    #3A3527;  /* stronger dividers / hover borders                 */
+
+  /* ---- The signature: amber (spent with discipline) ---------------------- */
+  --amber:        #F5A524;  /* primary signature                             */
+  --amber-bright: #FFC766;  /* highlight / gradient top                       */
+  --amber-deep:   #C77C0F;  /* depth on amber elements, pressed states        */
+  --amber-ink:    #1A1206;  /* text that sits ON amber                        */
+  --amber-glow:   rgba(245, 165, 36, 0.18);
+
+  /* ---- Type colors: warm off-whites + warm grays ------------------------- */
+  --ink:    #F4EFE4;  /* primary text — warm white, never pure #fff          */
+  --ink-2:  #D8D1C2;  /* slightly dimmed headings/body                       */
+  --muted:  #9E988A;  /* secondary copy                                      */
+  --faint:  #6B6556;  /* labels, captions, the quietest text                 */
+
+  /* ---- Semantic (used sparingly, honest UI states) ----------------------- */
+  --good:   #6FBF73;  /* "accepted" / positive in product mocks             */
+  --good-bg: rgba(111, 191, 115, 0.12);
+
+  /* ---- Type families (copied) -------------------------------------------- */
+  --font-display: "Hanken Grotesk Variable", "Hanken Grotesk", system-ui, sans-serif;
+  --font-body:    "Hanken Grotesk Variable", "Hanken Grotesk", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
+
+  /* ---- Type scale (fluid, oversized display) ----------------------------- */
+  --step--1: clamp(0.82rem, 0.79rem + 0.12vw, 0.9rem);
+  --step-0:  clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1:  clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+  --step-2:  clamp(1.55rem, 1.35rem + 1vw, 2.1rem);
+  --step-3:  clamp(2.1rem, 1.7rem + 2vw, 3.1rem);
+  --step-4:  clamp(2.8rem, 2.1rem + 3.4vw, 4.6rem);
+  --step-5:  clamp(3.4rem, 2.3rem + 5.4vw, 6.4rem);
+
+  /* ---- Spacing rhythm ---------------------------------------------------- */
+  --space-section: clamp(5rem, 3.5rem + 7vw, 9rem);
+  --radius:   14px;
+  --radius-sm: 9px;
+  --radius-lg: 22px;
+
+  /* ---- Shadows (warm, low, premium) -------------------------------------- */
+  --shadow:    0 18px 50px -20px rgba(0, 0, 0, 0.7);
+  --shadow-amber: 0 14px 44px -16px rgba(245, 165, 36, 0.4);
+
+  /* ---- Layout ------------------------------------------------------------ */
+  --maxw: 1140px;
+  --gutter: clamp(1.15rem, 0.6rem + 2.5vw, 2.5rem);
+}
