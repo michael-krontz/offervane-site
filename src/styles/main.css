@@ -645,6 +645,16 @@ em { font-style: normal; }
 .snippet__note code { color: var(--amber); }
 
 /* =========================== PRICING =========================== */
+.pricing {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 1rem + 4vw, 4.5rem);
+  align-items: center;
+}
+.pricing .section__head { max-width: none; margin-bottom: 0; }
+/* smaller than the page H2 so it wraps to 2 lines in the half-width column;
+   the <br> pins the break after "tool,". restored to full size when stacked. */
+.pricing .section__h { font-size: clamp(2.25rem, 0.9rem + 2.4vw, 2.85rem); }
 .price {
   max-width: 480px;
   margin-inline: auto;
@@ -885,6 +895,10 @@ em { font-style: normal; }
   .vane { width: 260px; }
   .proof { grid-template-columns: 1fr; }
   .rules { grid-template-columns: 1fr; }
+  .pricing { grid-template-columns: 1fr; }
+  .pricing .section__head { max-width: 30ch; margin-bottom: clamp(2.5rem, 1.5rem + 3vw, 4rem); }
+  .pricing .section__h { font-size: var(--step-4); }
+  .pricing .section__h br { display: none; }
   .founder { grid-template-columns: 1fr; }
   .founder__portrait { max-width: 340px; }
   .cards-3 { grid-template-columns: 1fr; }
