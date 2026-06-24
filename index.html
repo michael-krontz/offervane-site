@@ -57,13 +57,18 @@
   </head>
   <body>
     <!-- =================================================================
-         LogoMark — SINGLE SOURCE OF TRUTH for the OfferVane mark.
-         TODO: replace with final weathervane SVG.
-         Swap the inner content of this <symbol> (keep id="ov-logomark";
-         keep the "0 0 48 48" viewBox or adjust the <use> sizes below) and
-         the mark updates everywhere it appears: header, footer, final CTA.
-         Separate static assets to also swap at launch:
-           public/favicon.svg  ·  public/og.png
+         LogoMark — SINGLE SOURCE OF TRUTH for the small OfferVane mark.
+         TODO: replace placeholder with Michael's weathervane SVG.
+         Paste your finished mark inside this <symbol> (keep id="ov-logomark";
+         keep the "0 0 48 48" viewBox, or adjust the <use> sizes below) and it
+         updates EVERYWHERE at once: header, footer, and the final-CTA mark.
+
+         The placeholder below is a compass — intentionally a stand-in, NOT the
+         brand. Do not redraw it; just swap in the real weathervane.
+
+         Two more swap points to replace separately with your art:
+           • the large HERO illustration  (see "HERO weathervane" TODO below)
+           • static assets:  public/favicon.svg  ·  public/og.png
          ================================================================= -->
     <svg class="logomark-sprite" aria-hidden="true" focusable="false">
       <symbol id="ov-logomark" viewBox="0 0 48 48" fill="none">
@@ -131,6 +136,13 @@
 
           <!-- signature: the weathervane, pointing toward the deal -->
           <div class="hero__vane reveal" data-delay="2" aria-hidden="true">
+            <!-- ===== HERO weathervane illustration — PLACEHOLDER =========
+                 TODO: replace placeholder with Michael's weathervane SVG (large hero art).
+                 This is a SEPARATE, larger asset from the small header LogoMark above.
+                 Swap everything inside <div class="vane"> below with your finished
+                 illustration. (The needle settle/hover animation belongs to this
+                 placeholder; your own art can bring its own motion, or none.)
+                 ============================================================ -->
             <div class="vane">
               <svg viewBox="0 0 260 260" width="100%" height="100%" fill="none">
                 <circle cx="130" cy="130" r="118" stroke="var(--line)" stroke-width="1.5" />
@@ -154,6 +166,7 @@
               </svg>
               <p class="vane__caption">Points sellers straight to a number.</p>
             </div>
+            <!-- ===== /HERO weathervane illustration (swap point) ===== -->
           </div>
         </div>
       </section>
@@ -425,22 +438,12 @@
       <section class="section" id="founder">
         <div class="wrap founder">
           <figure class="founder__portrait reveal">
-            <!-- TODO: MICHAEL — add your headshot as public/founder-headshot.jpg
-                 (the fallback below shows until that file exists). -->
+            <!-- swap monogram for founder-headshot.jpg when ready:
+                 replace the <span class="founder__monogram"> below with
+                 <img class="founder__photo" src="founder-headshot.jpg"
+                      alt="Michael Krontz, founder of OfferVane" width="480" height="600"> -->
             <div class="founder__frame">
-              <img
-                class="founder__photo"
-                src="founder-headshot.jpg"
-                alt="Michael Krontz, founder of OfferVane"
-                width="480"
-                height="600"
-                loading="lazy"
-                onerror="this.remove()"
-              />
-              <span class="founder__placeholder" aria-hidden="true">
-                <span class="founder__initials">MK</span>
-                <span class="founder__cap">Add founder-headshot.jpg</span>
-              </span>
+              <span class="founder__monogram" aria-hidden="true">MK</span>
             </div>
             <figcaption class="founder__id">
               <!-- TODO: MICHAEL — confirm your name (also used in the signature below) -->

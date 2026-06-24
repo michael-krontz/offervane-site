@@ -14,12 +14,14 @@
   --line:      #2C2820;  /* hairline borders, warm                            */
   --line-2:    #3A3527;  /* stronger dividers / hover borders                 */
 
-  /* ---- The signature: amber (spent with discipline) ---------------------- */
-  --amber:        #F5A524;  /* primary signature                             */
-  --amber-bright: #FFC766;  /* highlight / gradient top                       */
-  --amber-deep:   #C77C0F;  /* depth on amber elements, pressed states        */
-  --amber-ink:    #1A1206;  /* text that sits ON amber                        */
-  --amber-glow:   rgba(245, 165, 36, 0.18);
+  /* ---- The signature: GOLD (money/premium, spent with discipline) --------
+     Shifted from bright yellow-amber toward a richer, deeper gold to match the
+     dashboard's money color — "premium," not "hazard." Kept AA on the dark bg. */
+  --amber:        #E8A317;  /* primary signature — money gold                 */
+  --amber-bright: #F4B53A;  /* highlight / gradient top                       */
+  --amber-deep:   #BC7A0D;  /* depth on gold elements, borders, pressed       */
+  --amber-ink:    #1A1206;  /* text that sits ON gold (AA on gold)            */
+  --amber-glow:   rgba(232, 163, 23, 0.18);
 
   /* ---- Type colors: warm off-whites + warm grays ------------------------- */
   --ink:    #F4EFE4;  /* primary text — warm white, never pure #fff          */
@@ -53,7 +55,7 @@
 
   /* ---- Shadows (warm, low, premium) -------------------------------------- */
   --shadow:    0 18px 50px -20px rgba(0, 0, 0, 0.7);
-  --shadow-amber: 0 14px 44px -16px rgba(245, 165, 36, 0.4);
+  --shadow-amber: 0 14px 44px -16px rgba(232, 163, 23, 0.4);
 
   /* ---- Layout ------------------------------------------------------------ */
   --maxw: 1140px;
