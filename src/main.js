@@ -59,6 +59,59 @@ if (vane) {
   }
 }
 
+/* ---- closing doorway light (Problem section, scroll-tied) -------------- */
+const doorlight = document.querySelector(".doorlight__svg");
+const problemTop = document.querySelector(".problem__top");
+if (doorlight && problemTop) {
+  const MIN_SCALE = 0.02; // progress 1 -> a few-px vertical sliver on the desktop column
+  const BASE_OPACITY = 0.25;
+
+  const apply = (p) => {
+    const s = 1 + (MIN_SCALE - 1) * p; // lerp 1 -> MIN_SCALE
+    const fade = p < 0.9 ? 1 : 1 - (p - 0.9) / 0.1; // fade to 0 over the final 10%
+    doorlight.style.transform = `scaleX(${s})`;
+    doorlight.style.opacity = (BASE_OPACITY * fade).toFixed(3);
+  };
+
+  if (prefersReduced) {
+    apply(0.5); // static mid-state, no scroll binding
+  } else {
+    let ticking = false;
+    let active = true;
+
+    const update = () => {
+      ticking = false;
+      if (!active) return;
+      const r = problemTop.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      const total = vh + r.height; // travel: block top at viewport bottom -> block bottom at viewport top
+      const p = total > 0 ? (vh - r.top) / total : 0;
+      apply(Math.max(0, Math.min(1, p)));
+    };
+    const queue = () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((e) => {
+            active = e.isIntersecting;
+            if (active) update();
+          }),
+        { rootMargin: "120px 0px 120px 0px" }
+      );
+      io.observe(problemTop);
+    }
+    window.addEventListener("scroll", queue, { passive: true });
+    window.addEventListener("resize", queue, { passive: true });
+    update(); // initial state
+  }
+}
+
 /* ---- copy button (visual placeholder — copies the snippet text) -------- */
 const snippetCode = document.querySelector(".snippet__code code");
 document.querySelector("[data-copy]")?.addEventListener("click", (e) => {

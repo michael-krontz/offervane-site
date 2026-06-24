@@ -191,10 +191,19 @@
       <!-- ============================ PROBLEM ============================ -->
       <section class="section" id="problem">
         <div class="wrap">
-          <header class="section__head">
-            <p class="eyebrow reveal">The problem</p>
-            <h2 class="section__h reveal">Interested sellers don't stay interested for long.</h2>
-          </header>
+          <div class="problem__top">
+            <header class="section__head">
+              <p class="eyebrow reveal">The problem</p>
+              <h2 class="section__h reveal">Interested sellers don't stay interested for long.</h2>
+            </header>
+            <!-- closing-doorway light: the seller's interest, narrowing as you scroll.
+                 Decorative; scroll-tied scaleX + fade driven by JS (see main.js). -->
+            <div class="doorlight">
+              <svg class="doorlight__svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <polygon class="doorlight__beam" points="10,100 90,100 62,0 38,0" />
+              </svg>
+            </div>
+          </div>
           <div class="cards-3">
             <article class="card reveal">
               <span class="card__no">01</span>

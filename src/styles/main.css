@@ -317,7 +317,44 @@ em { font-style: normal; }
   max-width: 56ch;
 }
 
-/* =========================== PROBLEM CARDS =========================== */
+/* =========================== PROBLEM ============================ */
+/* heading + the closing-doorway light, side by side; light fills the
+   right-side dead space and is anchored to (and as tall as) the H2 block. */
+.problem__top {
+  display: grid;
+  grid-template-columns: 1fr clamp(220px, 38%, 440px);
+  gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+  align-items: stretch;
+  margin-bottom: clamp(2.5rem, 1.5rem + 3vw, 4rem);
+}
+.problem__top .section__head { max-width: 34ch; margin-bottom: 0; }
+.doorlight { overflow: hidden; min-height: 120px; }
+.doorlight__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-box: border-box;
+  transform-origin: 50% 50%; /* narrows toward a centered vertical sliver */
+  transform: scaleX(1);
+  opacity: 0.25;             /* ~25% gold; JS drives this during scroll */
+  will-change: transform, opacity;
+}
+.doorlight__beam { fill: var(--amber); } /* --amber is this site's gold token (#E8A317) */
+/* tablet: graphic shrinks, stays right */
+@media (max-width: 1023px) {
+  .problem__top { grid-template-columns: 1fr clamp(150px, 30%, 300px); }
+}
+/* mobile: hide the graphic, heading takes the full width */
+@media (max-width: 767px) {
+  .problem__top { grid-template-columns: 1fr; }
+  .doorlight { display: none; }
+}
+/* reduced motion: hold the mid-state (~progress 0.5), no scroll animation */
+@media (prefers-reduced-motion: reduce) {
+  .doorlight__svg { transform: scaleX(0.51); opacity: 0.25; will-change: auto; }
+}
+
+/* PROBLEM CARDS */
 .cards-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
