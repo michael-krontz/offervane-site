@@ -286,12 +286,12 @@ em { font-style: normal; }
   letter-spacing: 0.05em;
 }
 .vane__needle {
-  transform-origin: 130px 130px;
-  transform: rotate(-32deg);
+  transform-origin: 130px 70px; /* the arrow's mount on the post */
+  transform: rotate(-56deg);    /* swung back, settles into place on load */
   transition: transform 1.2s cubic-bezier(0.2, 0.9, 0.2, 1.05);
 }
-.vane.is-set .vane__needle { transform: rotate(0deg); }
-.vane:hover .vane__needle { transform: rotate(8deg); }
+.vane.is-set .vane__needle { transform: rotate(-30deg); } /* rest: points up-right */
+.vane:hover .vane__needle { transform: rotate(-20deg); }
 .vane__caption {
   margin-top: 1.2rem;
   font-family: var(--font-mono);

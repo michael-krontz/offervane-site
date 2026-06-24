@@ -63,8 +63,8 @@
          keep the "0 0 48 48" viewBox, or adjust the <use> sizes below) and it
          updates EVERYWHERE at once: header, footer, and the final-CTA mark.
 
-         The placeholder below is a compass — intentionally a stand-in, NOT the
-         brand. Do not redraw it; just swap in the real weathervane.
+         The placeholder below is a weathervane stand-in (post + cardinal cross
+         + gold directional vane). Swap in your finished weathervane when ready.
 
          Two more swap points to replace separately with your art:
            • the large HERO illustration  (see "HERO weathervane" TODO below)
@@ -72,14 +72,25 @@
          ================================================================= -->
     <svg class="logomark-sprite" aria-hidden="true" focusable="false">
       <symbol id="ov-logomark" viewBox="0 0 48 48" fill="none">
-        <circle cx="24" cy="24" r="21" stroke="var(--line-2)" stroke-width="1.5" />
-        <g stroke="var(--faint)" stroke-width="1.4" stroke-linecap="round">
-          <path d="M24 7v5M24 36v5M7 24h5M36 24h5" />
+        <!-- post + cardinal cross (fixed structure) -->
+        <g stroke="var(--faint)" stroke-width="1.6" stroke-linecap="round">
+          <path d="M24 15 V40" />
+          <path d="M17 30 H31" />
+          <path d="M20 42 L24 38 L28 42" />
         </g>
-        <circle cx="24" cy="24" r="2.4" fill="var(--amber)" />
-        <path d="M24 24 L37 11 L31.5 16.2 L33.8 9.2 L26.8 11.5 L32 6 Z" fill="var(--amber)" />
-        <path d="M24 24 L13 35" stroke="var(--ink-2)" stroke-width="2.2" stroke-linecap="round" />
-        <circle cx="13" cy="35" r="2" fill="var(--ink-2)" />
+        <g fill="var(--faint)">
+          <circle cx="24" cy="23" r="1.7" />
+          <circle cx="24" cy="38" r="1.7" />
+          <circle cx="17" cy="30" r="1.7" />
+          <circle cx="31" cy="30" r="1.7" />
+        </g>
+        <!-- the vane: gold directional arrow on top, angled up-right -->
+        <g transform="rotate(-26 24 15)">
+          <path d="M15 15 H34" stroke="var(--amber)" stroke-width="2.6" stroke-linecap="round" />
+          <path d="M40 15 L32.5 10.7 L32.5 19.3 Z" fill="var(--amber)" />
+          <path d="M15 12.6 L8.5 10.4 L12.5 15 L8.5 19.6 L15 17.4 Z" fill="var(--amber)" />
+        </g>
+        <circle cx="24" cy="15" r="2.1" fill="var(--amber-deep)" />
       </symbol>
     </svg>
 
@@ -145,24 +156,30 @@
                  ============================================================ -->
             <div class="vane">
               <svg viewBox="0 0 260 260" width="100%" height="100%" fill="none">
-                <circle cx="130" cy="130" r="118" stroke="var(--line)" stroke-width="1.5" />
-                <circle cx="130" cy="130" r="92" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 7" />
-                <!-- cardinal ticks -->
-                <g stroke="var(--line-2)" stroke-width="2" stroke-linecap="round">
-                  <path d="M130 18v18M130 224v18M18 130h18M224 130h18" />
+                <!-- post + cardinal cross (fixed structure) -->
+                <g stroke="var(--line-2)" stroke-width="2.4" stroke-linecap="round">
+                  <path d="M130 70 V210" />
+                  <path d="M88 152 H172" />
+                  <path d="M111 213 L130 198 L149 213" />
                 </g>
-                <text x="130" y="46" class="vane__dir" text-anchor="middle">N</text>
-                <text x="130" y="226" class="vane__dir" text-anchor="middle">S</text>
-                <text x="40" y="135" class="vane__dir" text-anchor="middle">W</text>
-                <text x="220" y="135" class="vane__dir" text-anchor="middle">E</text>
-                <!-- the needle -->
+                <g fill="var(--faint)">
+                  <circle cx="130" cy="122" r="4" />
+                  <circle cx="130" cy="200" r="4" />
+                  <circle cx="88" cy="152" r="4" />
+                  <circle cx="172" cy="152" r="4" />
+                </g>
+                <text x="130" y="110" class="vane__dir" text-anchor="middle">N</text>
+                <text x="130" y="230" class="vane__dir" text-anchor="middle">S</text>
+                <text x="62" y="158" class="vane__dir" text-anchor="middle">W</text>
+                <text x="198" y="158" class="vane__dir" text-anchor="middle">E</text>
+                <!-- the vane: gold directional arrow (arrowhead + swallowtail), mounted on top (animated) -->
                 <g class="vane__needle">
-                  <path d="M130 130 L210 70 L182 92 L196 56 L160 70 L186 42 Z" fill="var(--amber)" />
-                  <path d="M130 130 L70 174" stroke="var(--ink-2)" stroke-width="4" stroke-linecap="round" />
-                  <circle cx="70" cy="174" r="5" fill="var(--ink-2)" />
-                  <circle cx="130" cy="130" r="6.5" fill="var(--amber-deep)" />
-                  <circle cx="130" cy="130" r="3" fill="var(--amber-bright)" />
+                  <path d="M74 70 H180" stroke="var(--amber)" stroke-width="6" stroke-linecap="round" />
+                  <path d="M204 70 L176 55 L176 85 Z" fill="var(--amber)" />
+                  <path d="M74 66 L50 58 L64 70 L50 82 L74 74 Z" fill="var(--amber)" />
                 </g>
+                <circle cx="130" cy="70" r="6.5" fill="var(--amber-deep)" />
+                <circle cx="130" cy="70" r="3" fill="var(--amber-bright)" />
               </svg>
               <p class="vane__caption">Points sellers straight to a number.</p>
             </div>

@@ -1,7 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
   <rect width="48" height="48" rx="11" fill="#0C0B09"/>
-  <circle cx="24" cy="24" r="16" stroke="#3A3527" stroke-width="1.5"/>
-  <path d="M24 24 L38 11 L31.5 16.6 L34.5 8.5 L26.4 11.5 L33 5 Z" fill="#E8A317"/>
-  <path d="M24 24 L12 35" stroke="#D8D1C2" stroke-width="2.4" stroke-linecap="round"/>
-  <circle cx="24" cy="24" r="2.6" fill="#F4B53A"/>
+  <!-- post + cross -->
+  <g stroke="#7A7363" stroke-width="2" stroke-linecap="round">
+    <path d="M24 16 V39"/>
+    <path d="M16 30 H32"/>
+  </g>
+  <!-- gold directional vane, angled up-right -->
+  <g transform="rotate(-26 24 15)">
+    <path d="M15 15 H34" stroke="#E8A317" stroke-width="3.2" stroke-linecap="round"/>
+    <path d="M41 15 L32 9.5 L32 20.5 Z" fill="#E8A317"/>
+    <path d="M15 12 L7.5 9 L12 15 L7.5 21 L15 18 Z" fill="#E8A317"/>
+  </g>
+  <circle cx="24" cy="15" r="2.4" fill="#BC7A0D"/>
 </svg>
