@@ -34,7 +34,7 @@ npm run preview    # serve the production build
 5. **Set your own rules** — tune offer %, repairs, buy box
 6. **Easy install** — copy-paste embed snippet
 7. **Pricing** — one plan, $500/mo, first month free, founding-member framing
-8. **Founder** — "built by an investor, for investors"
+8. **Founder** — "built by a builder, for investors" (designer getting into BRRRR, customer-zero)
 9. **Final CTA** — start your free trial
 
 ## Design tokens
@@ -57,8 +57,9 @@ instantly, so honesty is the edge. This site contains:
   review counts, or invented ROI/conversion stats.
 - Product mocks are clearly labeled as **example UI with sample data**, not real
   customer screenshots or claimed metrics.
-- The real credibility is the founder story (20-year product designer + active
-  BRRRR investor who built the tool he needed) and honest "just launched /
+- The real credibility is the founder story (20-year product designer and builder
+  getting into BRRRR investing, building the tool he'll use for his own deals as
+  customer-zero, with hands-on renovation experience) and honest "just launched /
   founding member" framing.
 - Placeholders mark where real proof will eventually go — search the markup for:
   - `<!-- REAL TESTIMONIAL GOES HERE -->`
