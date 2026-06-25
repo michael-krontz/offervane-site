@@ -70,16 +70,16 @@ if (doorlight && problemTop) {
   // Animate SVG attributes directly (viewBox 360x340). At p=1 the slit + wedge
   // collapse to a ~2-4px sliver under the slit, then the whole thing fades out.
   const apply = (p) => {
-    const sx = lerp(262, 273, p);        // slit left edge
-    const sw = lerp(24, 2, p);           // slit width  (24 -> 2)
-    const blx = lerp(28, 273, p);        // wedge bottom-left  -> converges under slit
-    const brx = lerp(236, 275, p);       // wedge bottom-right -> converges under slit
+    const sx = lerp(342, 358, p);        // slit left edge
+    const sw = lerp(34, 2, p);           // slit width  (34 -> 2; closed sliver unchanged)
+    const blx = lerp(12, 358, p);        // wedge bottom-left  -> converges under slit
+    const brx = lerp(312, 360, p);       // wedge bottom-right -> converges under slit
     slit.setAttribute("x", sx.toFixed(2));
     slit.setAttribute("width", sw.toFixed(2));
     // top edge tracks the slit; bottom edge converges to the slit's landing point
     wedge.setAttribute(
       "points",
-      `${sx.toFixed(2)},60 ${(sx + sw).toFixed(2)},60 ${brx.toFixed(2)},326 ${blx.toFixed(2)},326`
+      `${sx.toFixed(2)},84 ${(sx + sw).toFixed(2)},84 ${brx.toFixed(2)},456 ${blx.toFixed(2)},456`
     );
     const fade = p < 0.9 ? 1 : 1 - (p - 0.9) / 0.1; // fade whole composite over the final 10%
     doorlight.style.opacity = fade.toFixed(3);
