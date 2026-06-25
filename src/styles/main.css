@@ -334,15 +334,15 @@ em { font-style: normal; }
    drives the row height; the absolute SVG (out of flow) fills it without inflating it. */
 .doorlight {
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* let the wider spill reach left into the gap toward the headline */
   min-height: 120px;
 }
 .doorlight__svg {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 42%;  /* shift composite left so the slit sits ~22% in from the column's left edge */
   height: 100%;
-  width: auto; /* aspect from the 305x385 viewBox */
+  width: auto; /* aspect from the 440x385 viewBox */
   opacity: 1;  /* opacity lives in the gradient + slit; JS fades the whole composite at the end */
   will-change: opacity;
 }

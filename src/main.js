@@ -70,10 +70,10 @@ if (doorlight && problemTop) {
   // Animate SVG attributes directly (viewBox 360x340). At p=1 the slit + wedge
   // collapse to a ~2-4px sliver under the slit, then the whole thing fades out.
   const apply = (p) => {
-    const sx = lerp(215, 249, p);        // slit left edge (narrows toward center; height stays 220)
-    const sw = lerp(70, 2, p);           // slit width  (70 -> 2; closed sliver keeps full height)
-    const blx = lerp(15, 249, p);        // wedge bottom-left  -> converges under slit
-    const brx = lerp(255, 251, p);       // wedge bottom-right -> converges under slit
+    const sx = lerp(315, 369, p);        // slit left edge (narrows toward center; height stays 220)
+    const sw = lerp(110, 2, p);          // slit width  (110 -> 2; closed sliver keeps full height)
+    const blx = lerp(15, 369, p);        // wedge bottom-left  -> converges under slit
+    const brx = lerp(375, 371, p);       // wedge bottom-right -> converges under slit
     slit.setAttribute("x", sx.toFixed(2));
     slit.setAttribute("width", sw.toFixed(2));
     // top edge tracks the slit (y=220); bottom edge converges to the slit's landing point (y=370)
