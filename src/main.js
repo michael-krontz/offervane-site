@@ -129,8 +129,8 @@ const sunset = document.querySelector(".sunset__svg");
 const sun = sunset && sunset.querySelector(".sunset__sun");
 const howTop = document.querySelector(".how__top");
 if (sunset && sun && howTop) {
-  const CY0 = 76;   // progress 0: sun high, clearly above the horizon
-  const CY1 = 250;  // progress 1: sun center exactly on the horizon line (bisected by the clipPath)
+  const CY0 = 120;  // progress 0: sun high, clearly above the horizon
+  const CY1 = 312;  // progress 1: sun center exactly on the horizon line (bisected by the mask)
 
   const applySun = (p) => {
     sun.setAttribute("cy", (CY0 + (CY1 - CY0) * p).toFixed(2));

@@ -399,7 +399,7 @@ em { font-style: normal; }
 .sunset__svg { display: block; width: 100%; height: auto; } /* aspect from the 400x320 viewBox */
 .sunset__sun { fill: var(--amber); }                        /* crisp solid gold disc, 100% */
 .sunset__mask { fill: var(--bg-2); }                        /* section--alt bg; hides the sun below the horizon */
-.sunset__horizon { stroke: var(--amber); stroke-opacity: 0.3; stroke-width: 1.5; }
+.sunset__horizon { stroke: var(--amber); stroke-opacity: 0.3; stroke-width: 2; }
 /* tablet: graphic shrinks (sun radius scales with the column ~60px -> ~45px) */
 @media (max-width: 1023px) {
   .how__top { grid-template-columns: 1fr clamp(150px, 30%, 300px); }

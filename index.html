@@ -255,15 +255,15 @@
             <!-- afternoon: the sun descending toward the horizon as you scroll.
                  Decorative; scroll-tied cy driven by JS (see main.js). -->
             <div class="sunset">
-              <svg class="sunset__svg" viewBox="0 0 400 320" aria-hidden="true" focusable="false">
-                <!-- the sun: crisp solid gold disc, descends via JS (cy) -->
-                <circle class="sunset__sun" cx="200" cy="76" r="60" />
+              <svg class="sunset__svg" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+                <!-- the sun: crisp solid gold disc, shifted left (~27% in), descends via JS (cy) -->
+                <circle class="sunset__sun" cx="108" cy="120" r="100" />
                 <!-- horizon mask: a band the color of the section, drawn OVER the sun so the
                      part below the horizon is hidden with a hard edge (a robust bisection that
                      doesn't depend on clipPath re-evaluating as cy changes) -->
-                <rect class="sunset__mask" x="0" y="250" width="400" height="80" />
-                <!-- the horizon: faint static gold line, on top of the mask -->
-                <line class="sunset__horizon" x1="20" y1="250" x2="380" y2="250" />
+                <rect class="sunset__mask" x="0" y="312" width="400" height="100" />
+                <!-- the horizon: faint static gold line, column-aligned (20px insets), on top of the mask -->
+                <line class="sunset__horizon" x1="20" y1="312" x2="380" y2="312" />
               </svg>
             </div>
           </div>
