@@ -199,17 +199,25 @@
             <!-- closing-doorway light: the seller's interest, narrowing as you scroll.
                  Decorative; scroll-tied scaleX + fade driven by JS (see main.js). -->
             <div class="doorlight">
-              <svg class="doorlight__svg" viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+              <svg class="doorlight__svg" viewBox="0 0 360 340" aria-hidden="true" focusable="false">
                 <defs>
-                  <linearGradient id="doorlightGrad" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
-                    <stop class="doorlight__stop" offset="0" stop-opacity="0.45" />
-                    <stop class="doorlight__stop" offset="1" stop-opacity="0.05" />
+                  <linearGradient id="dlGrad" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
+                    <stop class="doorlight__stop" offset="0" stop-opacity="0.5" />
+                    <stop class="doorlight__stop" offset="1" stop-opacity="0.03" />
                   </linearGradient>
+                  <filter id="dlWedgeBlur" x="-25%" y="-15%" width="150%" height="140%">
+                    <feGaussianBlur stdDeviation="4.5" />
+                  </filter>
+                  <filter id="dlSlitBlur" x="-140%" y="-40%" width="380%" height="180%">
+                    <feGaussianBlur stdDeviation="3" />
+                  </filter>
                 </defs>
-                <!-- squat wedge of light pooling on the floor; gradient fades with distance -->
-                <polygon class="doorlight__beam" points="28,60 72,60 56,9 44,9" fill="url(#doorlightGrad)" />
-                <!-- the door crack itself: bright source flush against the wedge's top -->
-                <rect class="doorlight__slit" x="44" y="5" width="12" height="4" fill-opacity="0.8" />
+                <!-- the wedge: light spilling diagonally DOWN-AND-LEFT onto the floor.
+                     points: TL TR (flush to slit bottom), BR (shifted left), BL (far left) -->
+                <polygon class="doorlight__beam" fill="url(#dlGrad)" filter="url(#dlWedgeBlur)"
+                  points="262,60 286,60 236,326 28,326" />
+                <!-- the slit: bright vertical line through the door crack (the source), top-anchored -->
+                <rect class="doorlight__slit" filter="url(#dlSlitBlur)" x="262" y="0" width="24" height="60" />
               </svg>
             </div>
           </div>

@@ -328,28 +328,23 @@ em { font-style: normal; }
   margin-bottom: clamp(2.5rem, 1.5rem + 3vw, 4rem);
 }
 .problem__top .section__head { max-width: 34ch; margin-bottom: 0; }
-/* the composite sits LOW: bottom-anchored in the (H2-tall) right cell */
+/* slit (top) + wedge spilling down-left; bottom-anchored in the (H2-tall) cell.
+   Geometry is animated by updating SVG attributes in JS, not CSS transforms. */
 .doorlight {
   display: flex;
   align-items: flex-end;
   overflow: hidden;
   min-height: 120px;
 }
-/* aspect-ratio matches the viewBox (100/60) so preserveAspectRatio="none"
-   scales uniformly (no distortion); height comes from the column width. */
 .doorlight__svg {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 100 / 60;
-  transform-box: border-box;
-  transform-origin: 50% 100%; /* narrows toward a centered sliver at the floor */
-  transform: scaleX(1);
-  opacity: 1;                 /* opacity lives in the gradient/slit; JS fades the whole thing at the end */
-  will-change: transform, opacity;
+  height: auto; /* aspect from the 360x340 viewBox */
+  opacity: 1;   /* opacity lives in the gradient + slit; JS fades the whole composite at the end */
+  will-change: opacity;
 }
 .doorlight__stop { stop-color: var(--amber); } /* --amber is this site's gold token (#E8A317) */
-.doorlight__slit { fill: var(--amber); }
+.doorlight__slit { fill: var(--amber); fill-opacity: 0.85; } /* brightest element: the source */
 /* tablet: graphic shrinks, stays right */
 @media (max-width: 1023px) {
   .problem__top { grid-template-columns: 1fr clamp(150px, 30%, 300px); }
@@ -359,9 +354,9 @@ em { font-style: normal; }
   .problem__top { grid-template-columns: 1fr; }
   .doorlight { display: none; }
 }
-/* reduced motion: hold the mid-state (~progress 0.5), no scroll animation */
+/* reduced motion: JS paints the static mid-state (~progress 0.5); no scroll animation */
 @media (prefers-reduced-motion: reduce) {
-  .doorlight__svg { transform: scaleX(0.52); opacity: 1; will-change: auto; }
+  .doorlight__svg { will-change: auto; }
 }
 
 /* PROBLEM CARDS */
