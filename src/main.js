@@ -175,6 +175,60 @@ if (sunset && sun && howTop) {
   }
 }
 
+/* ---- offer-rule slider sweep (Tune the offer, scroll-tied) ------------- */
+const ruleSlider = document.querySelector("[data-rule-slider]");
+const ruleReadout = document.querySelector("[data-rule-readout]");
+const rulesRef = document.querySelector(".rules");
+if (ruleSlider && ruleReadout && rulesRef) {
+  // progress -> ARV multiplier %: two linear segments (0 -> 65, 0.5 -> 80, 1 -> 70)
+  const valueAt = (p) =>
+    p < 0.5 ? 65 + (80 - 65) * (p / 0.5) : 80 + (70 - 80) * ((p - 0.5) / 0.5);
+
+  const applyRule = (p) => {
+    const v = valueAt(p);
+    ruleSlider.style.setProperty("--p", v.toFixed(2) + "%"); // fill width + knob position (inherit --p)
+    ruleReadout.textContent = Math.round(v) + "%";           // whole-number readout
+  };
+
+  if (prefersReduced) {
+    applyRule(1); // static resting state: 70%
+  } else {
+    let ticking = false;
+    let active = true;
+
+    const update = () => {
+      ticking = false;
+      if (!active) return;
+      const r = rulesRef.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      const total = vh + r.height;
+      const p = total > 0 ? (vh - r.top) / total : 0;
+      applyRule(Math.max(0, Math.min(1, p)));
+    };
+    const queue = () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((e) => {
+            active = e.isIntersecting;
+            if (active) update();
+          }),
+        { rootMargin: "120px 0px 120px 0px" }
+      );
+      io.observe(rulesRef);
+    }
+    window.addEventListener("scroll", queue, { passive: true });
+    window.addEventListener("resize", queue, { passive: true });
+    update();
+  }
+}
+
 /* ---- copy button (visual placeholder — copies the snippet text) -------- */
 const snippetCode = document.querySelector(".snippet__code code");
 document.querySelector("[data-copy]")?.addEventListener("click", (e) => {
