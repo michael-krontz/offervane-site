@@ -63,14 +63,13 @@ if (vane) {
 const doorlight = document.querySelector(".doorlight__svg");
 const problemTop = document.querySelector(".problem__top");
 if (doorlight && problemTop) {
-  const MIN_SCALE = 0.02; // progress 1 -> a few-px vertical sliver on the desktop column
-  const BASE_OPACITY = 0.25;
+  const MIN_SCALE = 0.035; // progress 1 -> a few-px sliver (slit + wedge) on the desktop column
 
   const apply = (p) => {
-    const s = 1 + (MIN_SCALE - 1) * p; // lerp 1 -> MIN_SCALE
-    const fade = p < 0.9 ? 1 : 1 - (p - 0.9) / 0.1; // fade to 0 over the final 10%
+    const s = 1 + (MIN_SCALE - 1) * p; // lerp 1 -> MIN_SCALE (narrows slit + wedge proportionally)
+    const fade = p < 0.9 ? 1 : 1 - (p - 0.9) / 0.1; // whole composite fades out over the final 10%
     doorlight.style.transform = `scaleX(${s})`;
-    doorlight.style.opacity = (BASE_OPACITY * fade).toFixed(3);
+    doorlight.style.opacity = fade.toFixed(3);
   };
 
   if (prefersReduced) {
