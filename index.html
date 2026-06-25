@@ -199,19 +199,19 @@
             <!-- closing-doorway light: the seller's interest, narrowing as you scroll.
                  Decorative; scroll-tied scaleX + fade driven by JS (see main.js). -->
             <div class="doorlight">
-              <svg class="doorlight__svg" viewBox="0 0 392 470" aria-hidden="true" focusable="false">
+              <svg class="doorlight__svg" viewBox="0 0 305 385" aria-hidden="true" focusable="false">
                 <defs>
                   <linearGradient id="dlGrad" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
                     <stop class="doorlight__stop" offset="0" stop-opacity="0.5" />
                     <stop class="doorlight__stop" offset="1" stop-opacity="0.03" />
                   </linearGradient>
                 </defs>
-                <!-- the wedge: light spilling diagonally DOWN-AND-LEFT onto the floor (sharp edges).
+                <!-- the wedge: SHORT pool of light spilling down-and-left onto the floor (sharp edges).
                      points: TL TR (flush to slit bottom), BR (shifted left), BL (far left) -->
                 <polygon class="doorlight__beam" fill="url(#dlGrad)"
-                  points="342,84 376,84 312,456 12,456" />
-                <!-- the slit: bright vertical line through the door crack (the source), top-anchored -->
-                <rect class="doorlight__slit" x="342" y="0" width="34" height="84" />
+                  points="215,220 285,220 255,370 15,370" />
+                <!-- the slit: tall, wide door crack (the source, the dominant element), top-anchored -->
+                <rect class="doorlight__slit" x="215" y="0" width="70" height="220" />
               </svg>
             </div>
           </div>

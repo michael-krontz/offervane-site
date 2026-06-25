@@ -328,19 +328,22 @@ em { font-style: normal; }
   margin-bottom: clamp(2.5rem, 1.5rem + 3vw, 4rem);
 }
 .problem__top .section__head { max-width: 34ch; margin-bottom: 0; }
-/* slit (top) + wedge spilling down-left; bottom-anchored in the (H2-tall) cell.
-   Geometry is animated by updating SVG attributes in JS, not CSS transforms. */
+/* tall door slit + short floor pool; geometry animated via SVG attributes in JS.
+   Height-driven + right-anchored so the composite spans the H2 block exactly:
+   slit top sits at the H2's first line, wedge ends at the last line. The header
+   drives the row height; the absolute SVG (out of flow) fills it without inflating it. */
 .doorlight {
-  display: flex;
-  align-items: flex-end;
+  position: relative;
   overflow: hidden;
   min-height: 120px;
 }
 .doorlight__svg {
-  display: block;
-  width: 100%;
-  height: auto; /* aspect from the 360x340 viewBox */
-  opacity: 1;   /* opacity lives in the gradient + slit; JS fades the whole composite at the end */
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: auto; /* aspect from the 305x385 viewBox */
+  opacity: 1;  /* opacity lives in the gradient + slit; JS fades the whole composite at the end */
   will-change: opacity;
 }
 .doorlight__stop { stop-color: var(--amber); } /* --amber is this site's gold token (#E8A317) */
