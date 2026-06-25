@@ -385,6 +385,31 @@ em { font-style: normal; }
 .card h3 { font-size: var(--step-2); margin: 0.9rem 0 0.7rem; font-weight: 700; }
 .card p { color: var(--muted); }
 
+/* =========================== HOW IT WORKS (heading + sunset) ============= */
+/* mirrors .problem__top: heading left, scroll-tied graphic right. */
+.how__top {
+  display: grid;
+  grid-template-columns: 1fr clamp(220px, 38%, 440px);
+  gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+  align-items: center;
+  margin-bottom: clamp(2.5rem, 1.5rem + 3vw, 4rem);
+}
+.how__top .section__head { max-width: 34ch; margin-bottom: 0; }
+.sunset { min-height: 120px; }
+.sunset__svg { display: block; width: 100%; height: auto; } /* aspect from the 400x320 viewBox */
+.sunset__sun { fill: var(--amber); }                        /* crisp solid gold disc, 100% */
+.sunset__mask { fill: var(--bg-2); }                        /* section--alt bg; hides the sun below the horizon */
+.sunset__horizon { stroke: var(--amber); stroke-opacity: 0.3; stroke-width: 1.5; }
+/* tablet: graphic shrinks (sun radius scales with the column ~60px -> ~45px) */
+@media (max-width: 1023px) {
+  .how__top { grid-template-columns: 1fr clamp(150px, 30%, 300px); }
+}
+/* mobile: hide the graphic, heading takes the full width */
+@media (max-width: 767px) {
+  .how__top { grid-template-columns: 1fr; }
+  .sunset { display: none; }
+}
+
 /* =========================== STEPS =========================== */
 .steps {
   list-style: none;

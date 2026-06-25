@@ -124,6 +124,57 @@ if (doorlight && problemTop) {
   }
 }
 
+/* ---- afternoon sun descending toward the horizon (How it works) -------- */
+const sunset = document.querySelector(".sunset__svg");
+const sun = sunset && sunset.querySelector(".sunset__sun");
+const howTop = document.querySelector(".how__top");
+if (sunset && sun && howTop) {
+  const CY0 = 76;   // progress 0: sun high, clearly above the horizon
+  const CY1 = 250;  // progress 1: sun center exactly on the horizon line (bisected by the clipPath)
+
+  const applySun = (p) => {
+    sun.setAttribute("cy", (CY0 + (CY1 - CY0) * p).toFixed(2));
+  };
+
+  if (prefersReduced) {
+    applySun(0.5); // static mid-descent, no scroll binding
+  } else {
+    let ticking = false;
+    let active = true;
+
+    const update = () => {
+      ticking = false;
+      if (!active) return;
+      const r = howTop.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      const total = vh + r.height;
+      const p = total > 0 ? (vh - r.top) / total : 0;
+      applySun(Math.max(0, Math.min(1, p)));
+    };
+    const queue = () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((e) => {
+            active = e.isIntersecting;
+            if (active) update();
+          }),
+        { rootMargin: "120px 0px 120px 0px" }
+      );
+      io.observe(howTop);
+    }
+    window.addEventListener("scroll", queue, { passive: true });
+    window.addEventListener("resize", queue, { passive: true });
+    update();
+  }
+}
+
 /* ---- copy button (visual placeholder — copies the snippet text) -------- */
 const snippetCode = document.querySelector(".snippet__code code");
 document.querySelector("[data-copy]")?.addEventListener("click", (e) => {

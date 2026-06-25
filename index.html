@@ -247,10 +247,26 @@
       <!-- ============================ HOW IT WORKS ============================ -->
       <section class="section section--alt" id="how">
         <div class="wrap">
-          <header class="section__head">
-            <p class="eyebrow reveal">How it works</p>
-            <h2 class="section__h reveal">Live on your site in one afternoon.</h2>
-          </header>
+          <div class="how__top">
+            <header class="section__head">
+              <p class="eyebrow reveal">How it works</p>
+              <h2 class="section__h reveal">Live on your site in one afternoon.</h2>
+            </header>
+            <!-- afternoon: the sun descending toward the horizon as you scroll.
+                 Decorative; scroll-tied cy driven by JS (see main.js). -->
+            <div class="sunset">
+              <svg class="sunset__svg" viewBox="0 0 400 320" aria-hidden="true" focusable="false">
+                <!-- the sun: crisp solid gold disc, descends via JS (cy) -->
+                <circle class="sunset__sun" cx="200" cy="76" r="60" />
+                <!-- horizon mask: a band the color of the section, drawn OVER the sun so the
+                     part below the horizon is hidden with a hard edge (a robust bisection that
+                     doesn't depend on clipPath re-evaluating as cy changes) -->
+                <rect class="sunset__mask" x="0" y="250" width="400" height="80" />
+                <!-- the horizon: faint static gold line, on top of the mask -->
+                <line class="sunset__horizon" x1="20" y1="250" x2="380" y2="250" />
+              </svg>
+            </div>
+          </div>
           <ol class="steps">
             <li class="step reveal">
               <div class="step__no">01</div>
