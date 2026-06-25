@@ -396,7 +396,9 @@ em { font-style: normal; }
 }
 .how__top .section__head { max-width: 34ch; margin-bottom: 0; }
 .sunset { min-height: 120px; }
-.sunset__svg { display: block; width: 100%; height: auto; } /* aspect from the 400x320 viewBox */
+/* overflow visible so the horizon's left tail (centered on the left-shifted sun)
+   can spill into the gap; it stays clear of the H2 (verified). */
+.sunset__svg { display: block; width: 100%; height: auto; overflow: visible; } /* aspect from the 400x400 viewBox */
 .sunset__sun { fill: var(--amber); }                        /* crisp solid gold disc, 100% */
 .sunset__mask { fill: var(--bg-2); }                        /* section--alt bg; hides the sun below the horizon */
 .sunset__horizon { stroke: var(--amber); stroke-opacity: 0.3; stroke-width: 2; }

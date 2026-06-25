@@ -262,8 +262,9 @@
                      part below the horizon is hidden with a hard edge (a robust bisection that
                      doesn't depend on clipPath re-evaluating as cy changes) -->
                 <rect class="sunset__mask" x="0" y="312" width="400" height="100" />
-                <!-- the horizon: faint static gold line, column-aligned (20px insets), on top of the mask -->
-                <line class="sunset__horizon" x1="20" y1="312" x2="380" y2="312" />
+                <!-- the horizon: faint static gold line, centered on the sun's x-axis (cx 108)
+                     with equal ~280-unit tails each side; left tail spills into the gap -->
+                <line class="sunset__horizon" x1="-172" y1="312" x2="388" y2="312" />
               </svg>
             </div>
           </div>
