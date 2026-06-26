@@ -180,9 +180,10 @@ const ruleSlider = document.querySelector("[data-rule-slider]");
 const ruleReadout = document.querySelector("[data-rule-readout]");
 const rulesRef = document.querySelector(".rules");
 if (ruleSlider && ruleReadout && rulesRef) {
-  // progress -> ARV multiplier %: two linear segments (0 -> 65, 0.5 -> 80, 1 -> 70)
+  // progress -> ARV multiplier %: two linear segments (0 -> 50, 0.5 -> 90, 1 -> 70)
+  // Wide swing for drama: 40 points up then 20 back down, sweeping most of the track.
   const valueAt = (p) =>
-    p < 0.5 ? 65 + (80 - 65) * (p / 0.5) : 80 + (70 - 80) * ((p - 0.5) / 0.5);
+    p < 0.5 ? 50 + (90 - 50) * (p / 0.5) : 90 + (70 - 90) * ((p - 0.5) / 0.5);
 
   const applyRule = (p) => {
     const v = valueAt(p);
