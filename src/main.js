@@ -230,17 +230,102 @@ if (ruleSlider && ruleReadout && rulesRef) {
   }
 }
 
-/* ---- copy button (visual placeholder — copies the snippet text) -------- */
-const snippetCode = document.querySelector(".snippet__code code");
-document.querySelector("[data-copy]")?.addEventListener("click", (e) => {
-  const btn = e.currentTarget;
-  const text = snippetCode ? snippetCode.innerText : "";
-  navigator.clipboard?.writeText(text).catch(() => {});
-  const prev = btn.textContent;
-  btn.textContent = "Copied";
-  btn.classList.add("is-copied");
-  setTimeout(() => {
-    btn.textContent = prev;
-    btn.classList.remove("is-copied");
-  }, 1600);
-});
+/* ---- Easy install: line-by-line snippet reveal + copy-button pulse ------ */
+/* The animation performs the headline ("Copy, paste, done"): lines paste in one
+   at a time as you scroll, then the Copy button flashes "Copied ✓" at the end. */
+const snippet = document.querySelector(".snippet");
+const copyBtn = snippet && snippet.querySelector("[data-copy]");
+const snipLines = snippet ? snippet.querySelectorAll(".snip-line") : [];
+if (snippet && copyBtn && snipLines.length) {
+  const N = snipLines.length;                 // 8 line slots (incl. the blank between groups)
+  const REVEAL_START = 0.1;
+  const REVEAL_END = 0.85;
+  const step = (REVEAL_END - REVEAL_START) / N; // ~0.094 of progress reveals each line
+
+  // restore() re-syncs the button to the current scroll state after a manual copy
+  let restore = null;
+
+  // ---- real Copy click: owns the button for its normal duration ----
+  let manualCopy = false;
+  let manualTimer = 0;
+  copyBtn.addEventListener("click", () => {
+    // rebuild from the line elements (incl. the blank slot) so the copy is exact and
+    // independent of reveal state — innerText drops the empty blank line.
+    const text = Array.from(snipLines, (l) => l.textContent).join("\n");
+    navigator.clipboard?.writeText(text).catch(() => {});
+    manualCopy = true;
+    copyBtn.classList.remove("is-pulse");
+    copyBtn.classList.add("is-copied");
+    copyBtn.textContent = "Copied";
+    clearTimeout(manualTimer);
+    manualTimer = setTimeout(() => {
+      manualCopy = false;
+      copyBtn.classList.remove("is-copied");
+      copyBtn.textContent = "Copy";
+      restore && restore(); // hand the button back to the scroll-tied pulse
+    }, 1600);
+  });
+
+  // ---- scroll-tied pulse (suppressed while a real copy is active) ----
+  let pulseOn = false;
+  const setPulse = (on) => {
+    if (manualCopy) return;          // a real click takes priority over the pulse
+    if (on === pulseOn) return;
+    pulseOn = on;
+    copyBtn.classList.toggle("is-pulse", on);
+    copyBtn.textContent = on ? "Copied ✓" : "Copy";
+  };
+
+  const applySnippet = (p) => {
+    for (let i = 0; i < N; i++) {
+      snipLines[i].classList.toggle("is-revealed", p >= REVEAL_START + i * step);
+    }
+    setPulse(p >= 0.95 && p < 1); // 0.95–1.0: filled-gold "Copied ✓" payoff
+  };
+
+  if (prefersReduced) {
+    snipLines.forEach((l) => l.classList.add("is-revealed")); // all visible, no pulse
+  } else {
+    snippet.classList.add("snippet--anim"); // opt into the hidden -> visible animation
+    let ticking = false;
+    let active = true;
+
+    const sync = () => {
+      const r = snippet.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      // Progress as the card rises from near the viewport bottom to near the top, so
+      // the reveal AND the end pulse both play while the card is actually on screen
+      // (unlike the decorative graphics, which can finish off-screen).
+      const START = 0.92 * vh;
+      const END = 0.12 * vh;
+      const p = (START - r.top) / (START - END);
+      applySnippet(Math.max(0, Math.min(1, p)));
+    };
+    restore = sync;
+    const update = () => {
+      ticking = false;
+      if (active) sync();
+    };
+    const queue = () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((e) => {
+            active = e.isIntersecting;
+            if (active) update();
+          }),
+        { rootMargin: "120px 0px 120px 0px" }
+      );
+      io.observe(snippet);
+    }
+    window.addEventListener("scroll", queue, { passive: true });
+    window.addEventListener("resize", queue, { passive: true });
+    update();
+  }
+}

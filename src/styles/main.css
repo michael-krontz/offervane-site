@@ -710,7 +710,29 @@ em { font-style: normal; }
   transition: background 0.18s ease;
 }
 .snippet__copy:hover { background: var(--amber-glow); }
+.snippet__copy { transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease; }
 .snippet__copy.is-copied { color: var(--good); border-color: var(--good); }
+/* scroll-tied payoff: filled gold "Copied ✓" at the end of the reveal (see main.js) */
+.snippet__copy.is-pulse {
+  background: var(--amber);
+  border-color: var(--amber-deep);
+  color: var(--amber-ink);
+}
+
+/* code snippet: per-line "paste-in" reveal. Lines are block boxes; the JS toggles
+   .is-revealed per scroll progress. Default (no JS) leaves them visible; the JS adds
+   .snippet--anim to opt into the hidden->visible animation (progressive enhancement). */
+.snip-line { display: block; }
+.snip-line--blank { height: 1.85em; } /* preserve the blank line's vertical rhythm */
+.snippet--anim .snip-line:not(.snip-line--blank) {
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.snippet--anim .snip-line.is-revealed { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .snippet--anim .snip-line { opacity: 1 !important; transform: none !important; }
+}
 .snippet__code {
   margin: 0;
   padding: 1.5rem 1.6rem;
