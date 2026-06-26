@@ -443,11 +443,26 @@ em { font-style: normal; }
 .step__body p { color: var(--muted); max-width: 62ch; }
 
 /* =========================== PROOF DEVICES =========================== */
+/* The math: the formula/breakdown card is the hero (7 cols), dashboard supports (5). */
 .proof {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 7fr 5fr;
   gap: 1.6rem;
   align-items: start;
+}
+/* math card: H2 heading lives inside the panel; roomier padding */
+.math-card__screen { padding: clamp(1.7rem, 1.2rem + 1.6vw, 2.8rem); }
+.math-card .eyebrow { margin-bottom: 0.9rem; }
+.math-card__h {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-wrap: balance;
+  margin: 0 0 1.5rem;
+  max-width: 24ch;
 }
 .device {
   margin: 0;
@@ -483,19 +498,27 @@ em { font-style: normal; }
   line-height: 1.5;
 }
 
-/* the formula line */
+/* the formula — promoted to a prominent mono banner at the top of the math card */
 .formula {
   font-family: var(--font-mono);
-  font-size: var(--step-1);
-  font-weight: 600;
-  color: var(--ink-2);
+  font-size: clamp(1.45rem, 1.05rem + 1.7vw, 2.2rem);
+  font-weight: 700;
+  color: var(--ink);
   letter-spacing: -0.01em;
-  padding-bottom: 1.3rem;
-  margin-bottom: 0.4rem;
-  border-bottom: 1px dashed var(--line-2);
+  text-align: center;
+  line-height: 1.2;
+  background: var(--bg-2);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  padding: 1.2rem 1rem;
+  margin: 0 0 1.6rem;
 }
-.formula span { color: var(--faint); margin-inline: 0.15em; }
-.formula__eq { color: var(--amber) !important; }
+.formula span { color: var(--amber); margin-inline: 0.18em; } /* gold operators (× − =) + "offer" */
+.formula__eq { color: var(--amber); }
+/* math: 7/5 split down to 768, stack below (math card first, dashboard under) */
+@media (max-width: 767px) {
+  .proof { grid-template-columns: 1fr; }
+}
 
 .breakdown { display: grid; gap: 0.1rem; }
 .breakdown__row {
@@ -965,7 +988,6 @@ em { font-style: normal; }
   .hero__inner { grid-template-columns: 1fr; }
   .hero__vane { order: -1; max-width: 300px; margin-inline: auto; }
   .vane { width: 260px; }
-  .proof { grid-template-columns: 1fr; }
   .rules { grid-template-columns: 1fr; }
   .pricing { grid-template-columns: 1fr; }
   .pricing .section__head { max-width: 30ch; margin-bottom: clamp(2.5rem, 1.5rem + 3vw, 4rem); }
