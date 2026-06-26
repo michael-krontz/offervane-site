@@ -230,27 +230,20 @@ if (ruleSlider && ruleReadout && rulesRef) {
   }
 }
 
-/* ---- Easy install: line-by-line snippet reveal + copy-button pulse ------ */
-/* The animation performs the headline ("Copy, paste, done"): lines paste in one
-   at a time as you scroll, then the Copy button flashes "Copied ✓" at the end. */
+/* ---- Easy install: YOUR_INVESTOR_ID typewriter (scroll-tied) ------------ */
+/* The only animation in this section. As the card scrolls into view the token
+   types in one character at a time (textContent = growing substring), finishing
+   around mid-section, then the caret just blinks. The Copy button stays in its
+   default state throughout — no scroll-tied animation on it. */
 const snippet = document.querySelector(".snippet");
 const copyBtn = snippet && snippet.querySelector("[data-copy]");
-const snipLines = snippet ? snippet.querySelectorAll(".snip-line") : [];
-if (snippet && copyBtn && snipLines.length) {
-  const N = snipLines.length;                 // 8 line slots (incl. the blank between groups)
-  const REVEAL_START = 0.1;
-  const REVEAL_END = 0.85;
-  const step = (REVEAL_END - REVEAL_START) / N; // ~0.094 of progress reveals each line
-
-  // YOUR_INVESTOR_ID typewriter: the token's line (the mount call) block-reveals at
-  // ~0.66, so the substring types out from there to ~0.90 — fully visible, finishing
-  // before the Copy pulse. textContent is set to a growing substring (not a clip wipe).
-  const typeId = snippet.querySelector("[data-typeid]");
+const typeId = snippet && snippet.querySelector("[data-typeid]");
+if (snippet && copyBtn) {
   const FULL_ID = typeId ? typeId.dataset.full : "";
-  const TYPE_START = 0.66;
-  const TYPE_END = 0.9;
+  const TYPE_START = 0.05; // empty (just the cursor) before this
+  const TYPE_END = 0.55;   // fully typed by mid-section; caret blinks through the hold
 
-  // Canonical snippet text for copy — stable regardless of reveal/typewriter state
+  // Canonical snippet text for copy — stable regardless of the typewriter state
   // (mirrors the markup; keep in sync if the snippet changes).
   const SNIPPET_TEXT = [
     "<!-- 1. Where the form should appear -->",
@@ -263,95 +256,66 @@ if (snippet && copyBtn && snipLines.length) {
     "</script>",
   ].join("\n");
 
-  // restore() re-syncs the button to the current scroll state after a manual copy
-  let restore = null;
-
-  // ---- real Copy click: owns the button for its normal duration ----
-  let manualCopy = false;
-  let manualTimer = 0;
+  // real Copy click: standard copy-to-clipboard feedback (not scroll-tied)
+  let copyTimer = 0;
   copyBtn.addEventListener("click", () => {
-    // copy the canonical text so a mid-scroll click still yields the full, exact snippet
-    // (incl. the blank line and the complete YOUR_INVESTOR_ID, even while it's typing).
     navigator.clipboard?.writeText(SNIPPET_TEXT).catch(() => {});
-    manualCopy = true;
-    copyBtn.classList.remove("is-pulse");
     copyBtn.classList.add("is-copied");
     copyBtn.textContent = "Copied";
-    clearTimeout(manualTimer);
-    manualTimer = setTimeout(() => {
-      manualCopy = false;
+    clearTimeout(copyTimer);
+    copyTimer = setTimeout(() => {
       copyBtn.classList.remove("is-copied");
       copyBtn.textContent = "Copy";
-      restore && restore(); // hand the button back to the scroll-tied pulse
     }, 1600);
   });
 
-  // ---- scroll-tied pulse (suppressed while a real copy is active) ----
-  let pulseOn = false;
-  const setPulse = (on) => {
-    if (manualCopy) return;          // a real click takes priority over the pulse
-    if (on === pulseOn) return;
-    pulseOn = on;
-    copyBtn.classList.toggle("is-pulse", on);
-    copyBtn.textContent = on ? "Copied ✓" : "Copy";
-  };
-
-  const applySnippet = (p) => {
-    for (let i = 0; i < N; i++) {
-      snipLines[i].classList.toggle("is-revealed", p >= REVEAL_START + i * step);
-    }
-    if (typeId) {
+  if (typeId) {
+    const applyType = (p) => {
       const t = Math.max(0, Math.min(1, (p - TYPE_START) / (TYPE_END - TYPE_START)));
       typeId.textContent = FULL_ID.substring(0, Math.floor(t * FULL_ID.length));
-    }
-    setPulse(p >= 0.95 && p < 1); // 0.95–1.0: filled-gold "Copied ✓" payoff
-  };
-
-  if (prefersReduced) {
-    snipLines.forEach((l) => l.classList.add("is-revealed")); // all visible, no pulse
-    if (typeId) typeId.textContent = FULL_ID;                 // full id, no typing
-  } else {
-    snippet.classList.add("snippet--anim"); // opt into the hidden -> visible animation
-    if (typeId) typeId.textContent = "";     // start empty (update() fills per scroll)
-    let ticking = false;
-    let active = true;
-
-    const sync = () => {
-      const r = snippet.getBoundingClientRect();
-      const vh = window.innerHeight || document.documentElement.clientHeight;
-      // Progress as the card rises from near the viewport bottom to near the top, so
-      // the reveal AND the end pulse both play while the card is actually on screen
-      // (unlike the decorative graphics, which can finish off-screen).
-      const START = 0.92 * vh;
-      const END = 0.12 * vh;
-      const p = (START - r.top) / (START - END);
-      applySnippet(Math.max(0, Math.min(1, p)));
     };
-    restore = sync;
-    const update = () => {
-      ticking = false;
-      if (active) sync();
-    };
-    const queue = () => {
-      if (!ticking) {
-        requestAnimationFrame(update);
-        ticking = true;
+
+    if (prefersReduced) {
+      typeId.textContent = FULL_ID; // full id shown, no typing, no caret
+    } else {
+      snippet.classList.add("snippet--anim"); // enables the blinking caret
+      typeId.textContent = "";                // start empty (update() fills per scroll)
+      let ticking = false;
+      let active = true;
+
+      const sync = () => {
+        const r = snippet.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        // progress as the card rises from near the viewport bottom to near the top
+        const START = 0.92 * vh;
+        const END = 0.12 * vh;
+        applyType(Math.max(0, Math.min(1, (START - r.top) / (START - END))));
+      };
+      const update = () => {
+        ticking = false;
+        if (active) sync();
+      };
+      const queue = () => {
+        if (!ticking) {
+          requestAnimationFrame(update);
+          ticking = true;
+        }
+      };
+
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) =>
+            entries.forEach((e) => {
+              active = e.isIntersecting;
+              if (active) update();
+            }),
+          { rootMargin: "120px 0px 120px 0px" }
+        );
+        io.observe(snippet);
       }
-    };
-
-    if ("IntersectionObserver" in window) {
-      const io = new IntersectionObserver(
-        (entries) =>
-          entries.forEach((e) => {
-            active = e.isIntersecting;
-            if (active) update();
-          }),
-        { rootMargin: "120px 0px 120px 0px" }
-      );
-      io.observe(snippet);
+      window.addEventListener("scroll", queue, { passive: true });
+      window.addEventListener("resize", queue, { passive: true });
+      update();
     }
-    window.addEventListener("scroll", queue, { passive: true });
-    window.addEventListener("resize", queue, { passive: true });
-    update();
   }
 }

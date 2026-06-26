@@ -710,28 +710,26 @@ em { font-style: normal; }
   transition: background 0.18s ease;
 }
 .snippet__copy:hover { background: var(--amber-glow); }
-.snippet__copy { transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease; }
 .snippet__copy.is-copied { color: var(--good); border-color: var(--good); }
-/* scroll-tied payoff: filled gold "Copied ✓" at the end of the reveal (see main.js) */
-.snippet__copy.is-pulse {
-  background: var(--amber);
-  border-color: var(--amber-deep);
-  color: var(--amber-ink);
-}
 
-/* code snippet: per-line "paste-in" reveal. Lines are block boxes; the JS toggles
-   .is-revealed per scroll progress. Default (no JS) leaves them visible; the JS adds
-   .snippet--anim to opt into the hidden->visible animation (progressive enhancement). */
+/* code snippet: block lines so the blank line keeps its vertical rhythm. No
+   per-line animation — the only animated thing here is the YOUR_INVESTOR_ID
+   typewriter below. */
 .snip-line { display: block; }
-.snip-line--blank { height: 1.85em; } /* preserve the blank line's vertical rhythm */
-.snippet--anim .snip-line:not(.snip-line--blank) {
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.15s ease, transform 0.15s ease;
-}
-.snippet--anim .snip-line.is-revealed { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) {
-  .snippet--anim .snip-line { opacity: 1 !important; transform: none !important; }
+.snip-line--blank { height: 1.85em; }
+
+/* visually-hidden but available to assistive tech (e.g. the full id while the
+   visible token is mid-type) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* YOUR_INVESTOR_ID typewriter: JS sets the span to a growing substring; the caret
