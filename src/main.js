@@ -242,6 +242,27 @@ if (snippet && copyBtn && snipLines.length) {
   const REVEAL_END = 0.85;
   const step = (REVEAL_END - REVEAL_START) / N; // ~0.094 of progress reveals each line
 
+  // YOUR_INVESTOR_ID typewriter: the token's line (the mount call) block-reveals at
+  // ~0.66, so the substring types out from there to ~0.90 — fully visible, finishing
+  // before the Copy pulse. textContent is set to a growing substring (not a clip wipe).
+  const typeId = snippet.querySelector("[data-typeid]");
+  const FULL_ID = typeId ? typeId.dataset.full : "";
+  const TYPE_START = 0.66;
+  const TYPE_END = 0.9;
+
+  // Canonical snippet text for copy — stable regardless of reveal/typewriter state
+  // (mirrors the markup; keep in sync if the snippet changes).
+  const SNIPPET_TEXT = [
+    "<!-- 1. Where the form should appear -->",
+    '<div id="offervane-form"></div>',
+    "",
+    "<!-- 2. Load OfferVane and mount it -->",
+    '<script src="https://embed.offervane.com/widget.js"></script>',
+    "<script>",
+    "  OfferVaneLib.mount('offervane-form', 'YOUR_INVESTOR_ID')",
+    "</script>",
+  ].join("\n");
+
   // restore() re-syncs the button to the current scroll state after a manual copy
   let restore = null;
 
@@ -249,10 +270,9 @@ if (snippet && copyBtn && snipLines.length) {
   let manualCopy = false;
   let manualTimer = 0;
   copyBtn.addEventListener("click", () => {
-    // rebuild from the line elements (incl. the blank slot) so the copy is exact and
-    // independent of reveal state — innerText drops the empty blank line.
-    const text = Array.from(snipLines, (l) => l.textContent).join("\n");
-    navigator.clipboard?.writeText(text).catch(() => {});
+    // copy the canonical text so a mid-scroll click still yields the full, exact snippet
+    // (incl. the blank line and the complete YOUR_INVESTOR_ID, even while it's typing).
+    navigator.clipboard?.writeText(SNIPPET_TEXT).catch(() => {});
     manualCopy = true;
     copyBtn.classList.remove("is-pulse");
     copyBtn.classList.add("is-copied");
@@ -280,13 +300,19 @@ if (snippet && copyBtn && snipLines.length) {
     for (let i = 0; i < N; i++) {
       snipLines[i].classList.toggle("is-revealed", p >= REVEAL_START + i * step);
     }
+    if (typeId) {
+      const t = Math.max(0, Math.min(1, (p - TYPE_START) / (TYPE_END - TYPE_START)));
+      typeId.textContent = FULL_ID.substring(0, Math.floor(t * FULL_ID.length));
+    }
     setPulse(p >= 0.95 && p < 1); // 0.95–1.0: filled-gold "Copied ✓" payoff
   };
 
   if (prefersReduced) {
     snipLines.forEach((l) => l.classList.add("is-revealed")); // all visible, no pulse
+    if (typeId) typeId.textContent = FULL_ID;                 // full id, no typing
   } else {
     snippet.classList.add("snippet--anim"); // opt into the hidden -> visible animation
+    if (typeId) typeId.textContent = "";     // start empty (update() fills per scroll)
     let ticking = false;
     let active = true;
 

@@ -733,6 +733,23 @@ em { font-style: normal; }
 @media (prefers-reduced-motion: reduce) {
   .snippet--anim .snip-line { opacity: 1 !important; transform: none !important; }
 }
+
+/* YOUR_INVESTOR_ID typewriter: JS sets the span to a growing substring; the caret
+   sits just right of it and blinks. Only shown while the JS animation is active. */
+.typeid-caret { display: none; }
+.snippet--anim .typeid-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 1px;
+  background: var(--ink-2);
+  vertical-align: -0.16em;
+  animation: ov-caret-blink 1.06s steps(1, end) infinite;
+}
+@keyframes ov-caret-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .snippet--anim .typeid-caret { display: none; }
+}
 .snippet__code {
   margin: 0;
   padding: 1.5rem 1.6rem;
