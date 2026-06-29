@@ -273,7 +273,7 @@ em { font-style: normal; }
 .hero__preview {
   display: flex;
   flex-direction: column;
-  margin-top: clamp(2.5rem, 0.5rem + 7vw, 7rem); /* drop the card to sit beside the H1, not the eyebrow */
+  margin-top: clamp(1.5rem, 4.5vw, 5.5rem); /* drop the card to sit beside the H1; keeps CTA + caption in view at laptop heights */
 }
 .offerpreview {
   background: #F4EFE6;
@@ -316,21 +316,35 @@ em { font-style: normal; }
 }
 .offerpreview__check { display: inline-flex; width: 17px; height: 17px; color: var(--amber); flex: none; }
 .offerpreview__check svg { width: 100%; height: 100%; display: block; }
-/* 3. the offer */
-.offerpreview__amount {
-  margin: 0.15rem 0 0.5rem;
-  font-size: clamp(2.5rem, 1.9rem + 2.8vw, 3.3rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+/* 3. ARV context — medium, dark (saves gold for the offer), ~65% of the offer size */
+.offerpreview__arv {
+  margin: 0.15rem 0 0.4rem;
+  font-size: clamp(1.6rem, 1.25rem + 1.8vw, 2.15rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
   line-height: 1;
-  color: var(--amber-deep); /* brand gold, deepened so it reads on cream */
+  color: #2A2418;
 }
-/* 4. supporting detail */
+/* supporting detail — justifies the ARV */
 .offerpreview__comps {
   margin: 0;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: #9A8F79;
+}
+/* 4. the offer — largest text, brand gold; divider above reads "value -> offer" */
+.offerpreview__field.offerpreview__offer {
+  margin-top: 1.15rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid rgba(42, 36, 24, 0.12);
+}
+.offerpreview__amount {
+  margin: 0.15rem 0 0;
+  font-size: clamp(2.5rem, 1.9rem + 2.8vw, 3.3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--amber-deep); /* brand gold, deepened so it reads on cream */
 }
 /* 5. mock CTA */
 .offerpreview__btn {
