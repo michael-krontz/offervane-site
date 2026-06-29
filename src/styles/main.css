@@ -174,9 +174,8 @@ em { font-style: normal; }
   font-family: var(--font-display);
 }
 .brand__mark { display: inline-flex; }
-/* LogoMark: <symbol> defined once, referenced via <use> (see index.html sprite) */
-.logomark-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
-.logomark { display: block; }
+/* LogoMark: single raster asset (public/logomark.png), used in header + footer */
+.logomark { display: block; object-fit: contain; }
 .brand__word {
   font-weight: 800;
   font-size: 1.32rem;

@@ -56,43 +56,10 @@
     <script type="module" src="/src/main.js"></script>
   </head>
   <body>
-    <!-- =================================================================
-         LogoMark: SINGLE SOURCE OF TRUTH for the small OfferVane mark.
-         TODO: replace placeholder with Michael's weathervane SVG.
-         Paste your finished mark inside this <symbol> (keep id="ov-logomark";
-         keep the "0 0 48 48" viewBox, or adjust the <use> sizes below) and it
-         updates EVERYWHERE at once: header, footer, and the final-CTA mark.
-
-         The placeholder below is a weathervane stand-in (post + cardinal cross
-         + gold directional vane). Swap in your finished weathervane when ready.
-
-         Two more swap points to replace separately with your art:
-           • the large HERO illustration  (see "HERO weathervane" TODO below)
-           • static assets:  public/favicon.svg  ·  public/og.png
-         ================================================================= -->
-    <svg class="logomark-sprite" aria-hidden="true" focusable="false">
-      <symbol id="ov-logomark" viewBox="0 0 48 48" fill="none">
-        <!-- post + cardinal cross (fixed structure) -->
-        <g stroke="var(--faint)" stroke-width="1.6" stroke-linecap="round">
-          <path d="M24 15 V40" />
-          <path d="M17 30 H31" />
-          <path d="M20 42 L24 38 L28 42" />
-        </g>
-        <g fill="var(--faint)">
-          <circle cx="24" cy="23" r="1.7" />
-          <circle cx="24" cy="38" r="1.7" />
-          <circle cx="17" cy="30" r="1.7" />
-          <circle cx="31" cy="30" r="1.7" />
-        </g>
-        <!-- the vane: gold directional arrow on top, angled up-right -->
-        <g transform="rotate(-26 24 15)">
-          <path d="M15 15 H34" stroke="var(--amber)" stroke-width="2.6" stroke-linecap="round" />
-          <path d="M40 15 L32.5 10.7 L32.5 19.3 Z" fill="var(--amber)" />
-          <path d="M15 12.6 L8.5 10.4 L12.5 15 L8.5 19.6 L15 17.4 Z" fill="var(--amber)" />
-        </g>
-        <circle cx="24" cy="15" r="2.1" fill="var(--amber-deep)" />
-      </symbol>
-    </svg>
+    <!-- LogoMark: the small OfferVane mark (rooster-weathervane under a roof,
+         recolored to brand amber). Single asset used in the header + footer:
+         public/logomark.png. Other weathervane swap points are separate:
+         the large HERO illustration below, and public/og.png. -->
 
     <a class="skip-link" href="#problem">Skip to content</a>
 
@@ -101,7 +68,7 @@
       <div class="nav__inner">
         <a class="brand" href="#top" aria-label="OfferVane home">
           <span class="brand__mark" aria-hidden="true">
-            <svg class="logomark" width="34" height="34"><use href="#ov-logomark" /></svg>
+            <img class="logomark" src="logomark.png" width="34" height="34" alt="" />
           </span>
           <span class="brand__word">Offer<span class="brand__vane">Vane</span></span>
         </a>
@@ -556,7 +523,7 @@
       <section class="section finalcta">
         <div class="wrap finalcta__inner">
           <span class="finalcta__mark" aria-hidden="true">
-            <svg class="logomark" width="56" height="56"><use href="#ov-logomark" /></svg>
+            <img class="logomark" src="logomark.png" width="56" height="56" alt="" />
           </span>
           <h2 class="finalcta__h reveal">Start your free trial.</h2>
           <p class="finalcta__p reveal">
@@ -575,7 +542,7 @@
         <div class="footer__brand">
           <a class="brand" href="#top" aria-label="OfferVane home">
             <span class="brand__mark" aria-hidden="true">
-              <svg class="logomark" width="30" height="30"><use href="#ov-logomark" /></svg>
+              <img class="logomark" src="logomark.png" width="30" height="30" alt="" />
             </span>
             <span class="brand__word">Offer<span class="brand__vane">Vane</span></span>
           </a>
