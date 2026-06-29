@@ -268,30 +268,6 @@ em { font-style: normal; }
   letter-spacing: 0.02em;
 }
 
-/* the weathervane signature */
-.hero__vane { display: flex; justify-content: center; }
-.vane { width: min(100%, 380px); text-align: center; }
-.vane__mark {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
-  transform-origin: 50% 72%;             /* pivot near the vane's post, not the roof */
-  transform: rotate(-6deg) scale(0.97);  /* swung back; settles upright on load */
-  transition: transform 1.1s cubic-bezier(0.2, 0.9, 0.2, 1.05);
-}
-.vane.is-set .vane__mark { transform: none; }         /* rest: upright */
-.vane:hover .vane__mark { transform: rotate(-2deg); } /* gentle nudge, like a breeze */
-.vane__caption {
-  margin-top: 1.2rem;
-  font-family: var(--font-mono);
-  font-size: var(--step--1);
-  color: var(--faint);
-  letter-spacing: 0.03em;
-}
-
 /* =========================== SECTION SHELL =========================== */
 .section { padding-block: var(--space-section); }
 .section--alt {
@@ -984,7 +960,6 @@ em { font-style: normal; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .vane__mark { transition: none; transform: none; }
   .btn, .card { transition: none; }
 }
 
@@ -1009,8 +984,6 @@ em { font-style: normal; }
   .nav.is-open .nav__cta { display: inline-flex; margin: 1rem var(--gutter) 0; width: calc(100% - 2 * var(--gutter)); }
 
   .hero__inner { grid-template-columns: 1fr; }
-  .hero__vane { order: -1; max-width: 300px; margin-inline: auto; }
-  .vane { width: 260px; }
   .rules { grid-template-columns: 1fr; }
   .pricing { grid-template-columns: 1fr; }
   .pricing .section__head { max-width: 30ch; margin-bottom: clamp(2.5rem, 1.5rem + 3vw, 4rem); }

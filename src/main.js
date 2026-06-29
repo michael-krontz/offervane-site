@@ -49,16 +49,6 @@ nav.querySelectorAll(".nav__links a").forEach((a) =>
   })
 );
 
-/* ---- weathervane settle on load ---------------------------------------- */
-const vane = document.querySelector(".vane");
-if (vane) {
-  if (prefersReduced) {
-    vane.classList.add("is-set");
-  } else {
-    requestAnimationFrame(() => setTimeout(() => vane.classList.add("is-set"), 320));
-  }
-}
-
 /* ---- closing doorway light (Problem section, scroll-tied) -------------- */
 const doorlight = document.querySelector(".doorlight__svg");
 const problemTop = document.querySelector(".problem__top");
