@@ -111,7 +111,38 @@
               First month free · $500/mo after · Founding-member pricing while we're new
             </p>
           </div>
-          <!-- right column intentionally left empty — the hero breathes asymmetrically -->
+
+          <!-- right column: stylized seller-facing offer preview (white-labeled, static) -->
+          <div class="hero__preview">
+            <div class="offerpreview" aria-hidden="true">
+              <!-- investor-branded header strip — the white-label story -->
+              <div class="offerpreview__brand">
+                <span class="offerpreview__glyph">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 L21.5 11 L19 11 L19 20 L14 20 L14 14 L10 14 L10 20 L5 20 L5 11 L2.5 11 Z"/></svg>
+                </span>
+                <span class="offerpreview__investor">Heartland Home Buyers</span>
+              </div>
+              <!-- address (entered + verified) -->
+              <div class="offerpreview__field">
+                <p class="offerpreview__label">Property</p>
+                <p class="offerpreview__addr">
+                  <span>3565 N Pennsylvania St, Indianapolis IN</span>
+                  <span class="offerpreview__check">
+                    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4 L6.4 11.8 L13 4.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </p>
+              </div>
+              <!-- the offer: the payoff -->
+              <div class="offerpreview__field offerpreview__offer">
+                <p class="offerpreview__label">Your cash offer</p>
+                <p class="offerpreview__amount">$176,400</p>
+                <p class="offerpreview__comps">Based on 6 comps within 0.5 mi</p>
+              </div>
+              <!-- mock CTA (non-interactive) -->
+              <span class="offerpreview__btn">Accept this offer →</span>
+            </div>
+            <p class="offerpreview__caption">What sellers see on the investor's site. Your brand, not ours.</p>
+          </div>
         </div>
       </section>
 
