@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0C0B09" />
+
+    <!-- ===== SEO ===== -->
+    <title>OfferVane — Be first with a real number.</title>
+    <meta
+      name="description"
+      content="An embeddable instant-cash-offer widget for fix-and-flip, BRRRR, and wholesale investors. Sellers get a real offer in seconds; you capture the lead. Built by a builder, for investors."
+    />
+    <link rel="canonical" href="https://offervane.com/" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- ===== Open Graph / social ===== -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="OfferVane" />
+    <meta property="og:title" content="OfferVane — Be first with a real number." />
+    <meta
+      property="og:description"
+      content="Embeddable instant-cash-offer widget for real estate investors. Sellers respond faster to a real number; you catch the lead before they ghost. Built by a builder, for investors."
+    />
+    <meta property="og:url" content="https://offervane.com/" />
+    <meta property="og:image" content="https://offervane.com/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="OfferVane — Be first with a real number." />
+    <meta
+      name="twitter:description"
+      content="Turn site visitors into cash-offer leads. Built by a builder, for investors. Just launched. Founding members get in first."
+    />
+    <meta name="twitter:image" content="https://offervane.com/og.png" />
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+    <!-- ===== JSON-LD ===== -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "OfferVane",
+        "applicationCategory": "BusinessApplication",
+        "description": "Embeddable instant-cash-offer widget for real estate investors. Sellers get a transparent cash offer in seconds; the investor captures the lead.",
+        "offers": {
+          "@type": "Offer",
+          "price": "500",
+          "priceCurrency": "USD",
+          "description": "One plan. First month free."
+        }
+      }
+    </script>
+
+    <script type="module" crossorigin src="./assets/index-BGoAN3x3.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BGMx1sbB.css">
+  </head>
+  <body>
+    <!-- LogoMark: the small OfferVane mark (rooster-weathervane under a roof,
+         recolored to brand amber). Single asset used in the header + footer:
+         public/logomark.png. Other weathervane swap points are separate:
+         the large HERO illustration below, and public/og.png. -->
+
+    <a class="skip-link" href="#problem">Skip to content</a>
+
+    <!-- ============================ NAV ============================ -->
+    <header class="nav" id="top">
+      <div class="nav__inner">
+        <a class="brand" href="#top" aria-label="OfferVane home">
+          <span class="brand__mark" aria-hidden="true">
+            <img class="logomark" src="logomark.png" width="34" height="34" alt="" />
+          </span>
+          <span class="brand__word">Offer<span class="brand__vane">Vane</span></span>
+        </a>
+
+        <nav class="nav__links" aria-label="Primary">
+          <a href="#how">How it works</a>
+          <a href="#math">The math</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#founder">Founder</a>
+        </nav>
+
+        <a class="btn btn--amber nav__cta" href="#" data-cta="nav">Start free trial</a>
+        <button class="nav__toggle" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- ============================ HERO ============================ -->
+      <section class="hero">
+        <div class="hero__grid"></div>
+        <div class="wrap hero__inner">
+          <div class="hero__copy">
+            <p class="eyebrow reveal">Be first with a real number.</p>
+            <h1 class="hero__h reveal" data-delay="1">
+              Give every seller an instant cash offer,
+              <span class="amber-text">right on your site.</span>
+            </h1>
+            <p class="hero__sub reveal" data-delay="2">
+              OfferVane is an embeddable widget for fix-and-flip, BRRRR, and wholesale
+              investors. A seller enters their address, sees a real cash offer in seconds,
+              and lands in your dashboard as a lead, before they ghost you for someone else.
+            </p>
+            <div class="hero__cta reveal" data-delay="3">
+              <a class="btn btn--amber btn--lg" href="#" data-cta="hero">Start free trial</a>
+              <a class="btn btn--ghost btn--lg" href="#math">See how the math works</a>
+            </div>
+            <p class="hero__fine reveal" data-delay="4">
+              First month free · $500/mo after · Founding-member pricing while we're new
+            </p>
+          </div>
+
+          <!-- right column: stylized seller-facing offer preview (white-labeled, static) -->
+          <div class="hero__preview">
+            <div class="offerpreview" aria-hidden="true">
+              <!-- investor-branded header strip — the white-label story -->
+              <div class="offerpreview__brand">
+                <span class="offerpreview__glyph">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 L21.5 11 L19 11 L19 20 L14 20 L14 14 L10 14 L10 20 L5 20 L5 11 L2.5 11 Z"/></svg>
+                </span>
+                <span class="offerpreview__investor">Heartland Home Buyers</span>
+              </div>
+              <!-- address (entered + verified) -->
+              <div class="offerpreview__field">
+                <p class="offerpreview__label">Property</p>
+                <p class="offerpreview__addr">
+                  <span>3565 N Pennsylvania St, Indianapolis IN</span>
+                  <span class="offerpreview__check">
+                    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4 L6.4 11.8 L13 4.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </p>
+              </div>
+              <!-- ARV context — gives the cash offer something to land against -->
+              <div class="offerpreview__field">
+                <p class="offerpreview__label">After-repair value</p>
+                <p class="offerpreview__arv">$312,000</p>
+                <p class="offerpreview__comps">Based on 6 comps within 0.5 mi</p>
+              </div>
+              <!-- the offer: the payoff -->
+              <div class="offerpreview__field offerpreview__offer">
+                <p class="offerpreview__label">Your cash offer</p>
+                <p class="offerpreview__amount">$176,400</p>
+              </div>
+              <!-- mock CTA (non-interactive) -->
+              <span class="offerpreview__btn">Accept this offer →</span>
+            </div>
+            <p class="offerpreview__caption">What sellers see on the investor's site. Your brand, not ours.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================ PROBLEM ============================ -->
+      <section class="section" id="problem">
+        <div class="wrap">
+          <div class="problem__top">
+            <header class="section__head">
+              <p class="eyebrow reveal">The problem</p>
+              <h2 class="section__h reveal">Interested sellers don't stay interested for long.</h2>
+            </header>
+            <!-- closing-doorway light: the seller's interest, narrowing as you scroll.
+                 Decorative; scroll-tied scaleX + fade driven by JS (see main.js). -->
+            <div class="doorlight">
+              <svg class="doorlight__svg" viewBox="0 0 440 385" aria-hidden="true" focusable="false">
+                <defs>
+                  <linearGradient id="dlGrad" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
+                    <stop class="doorlight__stop" offset="0" stop-opacity="0.5" />
+                    <stop class="doorlight__stop" offset="1" stop-opacity="0.03" />
+                  </linearGradient>
+                </defs>
+                <!-- the wedge: wider SHORT pool spilling down-and-left toward the headline (sharp edges).
+                     points: TL TR (flush to slit bottom), BR (shifted left), BL (far left) -->
+                <polygon class="doorlight__beam" fill="url(#dlGrad)"
+                  points="315,220 425,220 375,370 15,370" />
+                <!-- the slit: tall, wide door crack (the source, the dominant element), top-anchored -->
+                <rect class="doorlight__slit" x="315" y="0" width="110" height="220" />
+              </svg>
+            </div>
+          </div>
+          <div class="cards-3">
+            <article class="card reveal">
+              <span class="card__no">01</span>
+              <h3>Sellers ghost slow investors.</h3>
+              <p>
+                A motivated seller fills out three forms in an afternoon. The first real number
+                usually wins. If yours shows up tomorrow, you're already too late.
+              </p>
+            </article>
+            <article class="card reveal" data-delay="1">
+              <span class="card__no">02</span>
+              <h3>Manual offers take too long.</h3>
+              <p>
+                Pull the comps, estimate repairs, run your rule, call back. By the time you do,
+                they've already talked to two other buyers.
+              </p>
+            </article>
+            <article class="card reveal" data-delay="2">
+              <span class="card__no">03</span>
+              <h3>Your visitors leave empty-handed.</h3>
+              <p>
+                People land on your site ready to sell, find nothing to do, and bounce. That's a
+                lead you paid for walking straight back out the door.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================ HOW IT WORKS ============================ -->
+      <section class="section section--alt" id="how">
+        <div class="wrap">
+          <div class="how__top">
+            <header class="section__head">
+              <p class="eyebrow reveal">How it works</p>
+              <h2 class="section__h reveal">Live on your site in one afternoon.</h2>
+            </header>
+            <!-- afternoon: the sun descending toward the horizon as you scroll.
+                 Decorative; scroll-tied cy driven by JS (see main.js). -->
+            <div class="sunset">
+              <svg class="sunset__svg" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+                <!-- the sun: crisp solid gold disc, shifted left (~27% in), descends via JS (cy) -->
+                <circle class="sunset__sun" cx="108" cy="120" r="100" />
+                <!-- horizon mask: a band the color of the section, drawn OVER the sun so the
+                     part below the horizon is hidden with a hard edge (a robust bisection that
+                     doesn't depend on clipPath re-evaluating as cy changes) -->
+                <rect class="sunset__mask" x="0" y="312" width="400" height="100" />
+                <!-- the horizon: faint static gold line, centered on the sun's x-axis (cx 108)
+                     with equal ~280-unit tails each side; left tail spills into the gap -->
+                <line class="sunset__horizon" x1="-172" y1="312" x2="388" y2="312" />
+              </svg>
+            </div>
+          </div>
+          <ol class="steps">
+            <li class="step reveal">
+              <div class="step__no">01</div>
+              <div class="step__body">
+                <h3>Drop the widget on your site.</h3>
+                <p>
+                  Paste one snippet. It works on whatever you've already got (WordPress, Webflow,
+                  Carrd, a plain HTML page) and inherits your brand instead of fighting it.
+                </p>
+              </div>
+            </li>
+            <li class="step reveal" data-delay="1">
+              <div class="step__no">02</div>
+              <div class="step__body">
+                <h3>A seller enters their info.</h3>
+                <p>
+                  Their address and a few quick questions about the property. No account, no
+                  friction. The kind of short form people actually finish.
+                </p>
+              </div>
+            </li>
+            <li class="step reveal" data-delay="2">
+              <div class="step__no">03</div>
+              <div class="step__body">
+                <h3>They get an offer. You get the lead.</h3>
+                <p>
+                  OfferVane pulls real comps, applies your rule, and shows a number on the spot.
+                  The seller sees a cash offer; the lead drops into your dashboard with everything
+                  you need to follow up fast.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============================ PRODUCT / PROOF ============================ -->
+      <section class="section" id="math">
+        <div class="wrap">
+          <!-- section intro: eyebrow + thesis H2 + one-line voice, above the cards -->
+          <header class="section__head">
+            <p class="eyebrow reveal">The math · what the seller sees</p>
+            <h2 class="section__h reveal">Offers you can stand behind, built from real comps.</h2>
+            <p class="section__lede reveal">No black box. One honest line of math, with rules you set.</p>
+          </header>
+          <div class="proof">
+            <!-- math card: formula banner + breakdown (heading now lives in the section intro) -->
+            <figure class="device math-card reveal">
+              <div class="device__screen math-card__screen">
+                <p class="formula formula--banner">ARV <span>×</span> your rule <span>−</span> repairs <span class="formula__eq">=</span> <span class="amber-text">offer</span></p>
+                <div class="breakdown">
+                  <div class="breakdown__row">
+                    <span class="breakdown__k">After-repair value <em>6 comps within 0.5 mi</em></span>
+                    <span class="breakdown__v">$312,000</span>
+                  </div>
+                  <div class="breakdown__row">
+                    <span class="breakdown__k">Your offer rule</span>
+                    <span class="breakdown__v">× 70%</span>
+                  </div>
+                  <div class="breakdown__row">
+                    <span class="breakdown__k">Estimated repairs</span>
+                    <span class="breakdown__v">− $42,000</span>
+                  </div>
+                  <div class="breakdown__row breakdown__row--total">
+                    <span class="breakdown__k">Your cash offer</span>
+                    <span class="breakdown__v amber-text">$176,400</span>
+                  </div>
+                </div>
+                <p class="device__note">Example breakdown with sample numbers, shown to demonstrate the product.</p>
+              </div>
+            </figure>
+
+            <!-- the investor dashboard lead -->
+            <figure class="device device--dash reveal" data-delay="1">
+              <figcaption class="device__bar">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                <span class="device__label">What lands in your dashboard</span>
+              </figcaption>
+              <div class="device__screen">
+                <div class="lead">
+                  <div class="lead__top">
+                    <span class="lead__badge">New lead</span>
+                    <span class="lead__time">2 min ago</span>
+                  </div>
+                  <h3 class="lead__addr">3565 N Pennsylvania St</h3>
+                  <div class="lead__stats">
+                    <span><em>Offer shown</em>$176,400</span>
+                    <span><em>ARV</em>$312k</span>
+                    <span><em>Est. repairs</em>$42k</span>
+                  </div>
+                  <div class="lead__foot">
+                    <span class="lead__contact">Seller contact captured</span>
+                    <a class="lead__act" href="#" tabindex="-1">Follow up →</a>
+                  </div>
+                </div>
+                <div class="lead lead--quiet">
+                  <div class="lead__top">
+                    <span class="lead__badge lead__badge--ok">Accepted</span>
+                    <span class="lead__time">yesterday</span>
+                  </div>
+                  <h3 class="lead__addr">5450 University Ave</h3>
+                  <div class="lead__stats">
+                    <span><em>Offer shown</em>$214,900</span>
+                    <span><em>ARV</em>$358k</span>
+                    <span><em>Est. repairs</em>$36k</span>
+                  </div>
+                </div>
+                <p class="device__note">Example UI with sample data, not a real seller.</p>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================ SET YOUR OWN RULES ============================ -->
+      <section class="section section--alt" id="rules">
+        <div class="wrap rules">
+          <div class="rules__copy">
+            <p class="eyebrow reveal">Your deal, your math</p>
+            <h2 class="section__h reveal">Tune the offer to your market and your model.</h2>
+            <p class="section__lede reveal">
+              70% gets you a deal in one market and laughed out of another. OfferVane lets you set
+              your own offer percentage and your repair-cost model by property condition, so every
+              offer reflects how <em>you</em> actually buy. Change a number; every future offer updates.
+            </p>
+            <p class="rules__tag reveal amber-text">Your deal. Your math.</p>
+          </div>
+
+          <figure class="device device--rules reveal" data-delay="1">
+            <figcaption class="device__bar">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="device__label">Your offer rules</span>
+            </figcaption>
+            <div class="device__screen">
+              <div class="ctrl">
+                <div class="ctrl__head"><span>Offer rule <em>ARV multiplier</em></span><span class="ctrl__val amber-text" data-rule-readout>70%</span></div>
+                <div class="slider" data-rule-slider style="--p:70%"><span class="slider__fill"></span><span class="slider__knob"></span></div>
+              </div>
+              <div class="ctrl">
+                <div class="ctrl__head"><span>Repair cost <em>$/sq ft, by condition</em></span></div>
+                <div class="ctrl__rows">
+                  <div class="ctrl__row"><span>Light</span><span class="ctrl__val">$15 / sq ft</span></div>
+                  <div class="ctrl__row"><span>Moderate</span><span class="ctrl__val">$30 / sq ft</span></div>
+                  <div class="ctrl__row"><span>Heavy</span><span class="ctrl__val">$55 / sq ft</span></div>
+                </div>
+              </div>
+              <p class="device__note">Example controls. The two dials the engine uses today: your ARV multiplier, and your repair cost per sq ft by condition. Set them once; they apply to every offer.</p>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <!-- ============================ EASY INSTALL ============================ -->
+      <section class="section" id="install">
+        <div class="wrap install">
+          <header class="section__head section__head--wide">
+            <p class="eyebrow reveal">Easy install</p>
+            <h2 class="section__h reveal">Copy, paste, done.</h2>
+            <p class="section__lede reveal">
+              One snippet in your site's HTML. No developer, no plugin to wrangle, no rebuild.
+              Drop the form wherever you want it and point it at your investor ID.
+            </p>
+          </header>
+
+          <div class="snippet reveal" data-delay="1">
+            <div class="snippet__bar">
+              <span class="snippet__file">index.html</span>
+              <button class="snippet__copy" type="button" data-copy>Copy</button>
+            </div>
+            <pre class="snippet__code"><code><span class="snip-line"><span class="c-c">&lt;!-- 1. Where the form should appear --&gt;</span></span><span class="snip-line"><span class="c-t">&lt;div</span> <span class="c-a">id</span>=<span class="c-s">"offervane-form"</span><span class="c-t">&gt;&lt;/div&gt;</span></span><span class="snip-line snip-line--blank"></span><span class="snip-line"><span class="c-c">&lt;!-- 2. Load OfferVane and mount it --&gt;</span></span><span class="snip-line"><span class="c-t">&lt;script</span> <span class="c-a">src</span>=<span class="c-s">"https://embed.offervane.com/widget.js"</span><span class="c-t">&gt;&lt;/script&gt;</span></span><span class="snip-line"><span class="c-t">&lt;script&gt;</span></span><span class="snip-line">  OfferVaneLib.mount(<span class="c-s">'offervane-form'</span>, <span class="c-s">'<span class="typeid" data-typeid data-full="YOUR_INVESTOR_ID" aria-hidden="true">YOUR_INVESTOR_ID</span><span class="sr-only">YOUR_INVESTOR_ID</span><span class="typeid-caret" aria-hidden="true"></span>'</span>)</span><span class="snip-line"><span class="c-t">&lt;/script&gt;</span></span></code></pre>
+            <p class="snippet__note">Illustrative. You'll get your own widget URL and <code>INVESTOR_ID</code> when you start a trial.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================ PRICING ============================ -->
+      <section class="section section--alt" id="pricing">
+        <div class="wrap pricing">
+          <header class="section__head">
+            <p class="eyebrow reveal">Pricing</p>
+            <h2 class="section__h reveal">Priced like a tool, <br>not a toll.</h2>
+            <p class="section__lede reveal">No tiers, no upsells, no per-lead fees.</p>
+          </header>
+
+          <div class="price reveal">
+            <div class="price__tag">Founding member</div>
+            <div class="price__main">
+              <span class="price__amount"><span class="price__cur">$</span>500</span>
+              <span class="price__per">/ month</span>
+            </div>
+            <p class="price__free">First month free. No card required.</p>
+            <ul class="price__list">
+              <li>Unlimited offers and leads</li>
+              <li>Your own offer rule and repair-cost model</li>
+              <li>Real-comp ARV on every offer</li>
+              <li>Embeddable widget for any site</li>
+              <li>Investor dashboard with full lead detail</li>
+              <li>A direct line to the founder, because you're early and your feedback shapes it</li>
+            </ul>
+            <a class="btn btn--amber btn--lg btn--block" href="#" data-cta="pricing">Start free trial</a>
+            <p class="price__fine">
+              Cancel anytime.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================ FOUNDER ============================ -->
+      <section class="section" id="founder">
+        <div class="wrap founder">
+          <figure class="founder__portrait reveal">
+            <div class="founder__frame">
+              <!-- Drop public/founder-headshot.jpg to auto-replace the monogram.
+                   Until then the img removes itself (onerror) and the MK monogram shows. -->
+              <img
+                class="founder__photo"
+                src="founder-headshot.jpg"
+                alt="Michael Krontz, founder of OfferVane"
+                width="480"
+                height="600"
+                loading="lazy"
+                onerror="this.remove()"
+              />
+              <span class="founder__monogram" aria-hidden="true">MK</span>
+            </div>
+            <figcaption class="founder__id">
+              <!-- TODO: MICHAEL, confirm your name (also used in the signature below) -->
+              <span class="founder__name">Michael Krontz</span>
+              <ul class="founder__facts">
+                <li>20 years designing software</li>
+                <li>Built equity through hands-on ownership</li>
+                <li>Built it for my own deals first</li>
+              </ul>
+            </figcaption>
+          </figure>
+
+          <div class="founder__copy">
+            <p class="eyebrow reveal">Who built this</p>
+            <h2 class="section__h reveal">Built by a builder, for investors.</h2>
+            <div class="founder__story reveal">
+              <p>
+                I'm a product designer with 20 years of shipping software, and I build the tools I
+                need. Now I'm getting into real estate investing myself, the BRRRR way, and OfferVane
+                is the tool I'm building to run my own deals. I'm customer zero.
+              </p>
+              <p>
+                Getting ready to buy, I studied how investors actually win deals, and one thing was
+                obvious: the first real offer usually wins, and pulling numbers by hand is too slow to
+                be first. I'd rather hand a seller a real offer in seconds than lose them while I run
+                comps. I've done hands-on renovation work too, so the repair side of the math is
+                something I understand concretely, not a guess.
+              </p>
+              <p>
+                So I built the instant-offer tool I want on day one: a real number on my own site,
+                with math I set and can defend to a seller's face. OfferVane just launched and I'm
+                building it in the open. It's new, I'm not going to pretend otherwise, and that's
+                exactly the opportunity. Get in as a founding member and you've got a direct line to
+                the person building it, and a say in where it goes next.
+              </p>
+            </div>
+            <p class="founder__sign reveal">
+              <!-- TODO: MICHAEL, confirm your name -->
+              Michael Krontz, Founder of OfferVane
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== HONEST PROOF PLACEHOLDER (no fake testimonials) ===== -->
+      <section class="section section--alt proofless" id="early">
+        <div class="wrap proofless__inner reveal">
+          <p class="eyebrow">Be one of the first</p>
+          <h2 class="proofless__h">No testimonials here yet, because we just launched.</h2>
+          <p class="proofless__p">
+            We could fill this space with made-up quotes and logos. We won't. Real results from real
+            investors will live here as founding members put OfferVane to work. Want your deal to be
+            one of them?
+          </p>
+          <!-- REAL TESTIMONIAL GOES HERE -->
+          <!-- REAL CUSTOMER LOGO GOES HERE -->
+          <a class="btn btn--ghost btn--lg" href="#" data-cta="early">Get in early</a>
+        </div>
+      </section>
+
+      <!-- ============================ FINAL CTA ============================ -->
+      <section class="section finalcta">
+        <div class="wrap finalcta__inner">
+          <span class="finalcta__mark" aria-hidden="true">
+            <img class="logomark" src="logomark.png" width="56" height="56" alt="" />
+          </span>
+          <h2 class="finalcta__h reveal">Start your free trial.</h2>
+          <p class="finalcta__p reveal">
+            Put a real cash offer on your site this week. First month's on us, with founding-member
+            pricing while we're new.
+          </p>
+          <a class="btn btn--amber btn--lg reveal" href="#" data-cta="final">Start free trial</a>
+          <p class="finalcta__fine reveal">$500/mo after your first month · Cancel anytime · Built by a builder, for investors</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================ FOOTER ============================ -->
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <div class="footer__brand">
+          <a class="brand" href="#top" aria-label="OfferVane home">
+            <span class="brand__mark" aria-hidden="true">
+              <img class="logomark" src="logomark.png" width="30" height="30" alt="" />
+            </span>
+            <span class="brand__word">Offer<span class="brand__vane">Vane</span></span>
+          </a>
+          <p>Be first with a real number. Built by a builder, for investors. Just launched in 2026.</p>
+        </div>
+        <nav class="footer__cols" aria-label="Footer">
+          <div>
+            <h4>Product</h4>
+            <a href="#how">How it works</a>
+            <a href="#math">The math</a>
+            <a href="#install">Install</a>
+            <a href="#pricing">Pricing</a>
+          </div>
+          <div>
+            <h4>Company</h4>
+            <a href="#founder">Founder</a>
+            <a href="#early">Get in early</a>
+          </div>
+          <div>
+            <h4>Legal</h4>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+          </div>
+        </nav>
+      </div>
+      <div class="wrap footer__base">
+        <span>© 2026 OfferVane</span>
+        <span>Pre-launch · Founding members welcome</span>
+      </div>
+    </footer>
+  </body>
+</html>
