@@ -112,45 +112,12 @@
             </p>
           </div>
 
-          <!-- signature: the weathervane, pointing toward the deal -->
+          <!-- signature: the OfferVane icon, settling into place on load -->
           <div class="hero__vane reveal" data-delay="2" aria-hidden="true">
-            <!-- ===== HERO weathervane illustration (PLACEHOLDER) =========
-                 TODO: replace placeholder with Michael's weathervane SVG (large hero art).
-                 This is a SEPARATE, larger asset from the small header LogoMark above.
-                 Swap everything inside <div class="vane"> below with your finished
-                 illustration. (The needle settle/hover animation belongs to this
-                 placeholder; your own art can bring its own motion, or none.)
-                 ============================================================ -->
             <div class="vane">
-              <svg viewBox="0 0 260 260" width="100%" height="100%" fill="none">
-                <!-- post + cardinal cross (fixed structure) -->
-                <g stroke="var(--line-2)" stroke-width="2.4" stroke-linecap="round">
-                  <path d="M130 70 V210" />
-                  <path d="M88 152 H172" />
-                  <path d="M111 213 L130 198 L149 213" />
-                </g>
-                <g fill="var(--faint)">
-                  <circle cx="130" cy="122" r="4" />
-                  <circle cx="130" cy="200" r="4" />
-                  <circle cx="88" cy="152" r="4" />
-                  <circle cx="172" cy="152" r="4" />
-                </g>
-                <text x="130" y="110" class="vane__dir" text-anchor="middle">N</text>
-                <text x="130" y="230" class="vane__dir" text-anchor="middle">S</text>
-                <text x="62" y="158" class="vane__dir" text-anchor="middle">W</text>
-                <text x="198" y="158" class="vane__dir" text-anchor="middle">E</text>
-                <!-- the vane: gold directional arrow (arrowhead + swallowtail), mounted on top (animated) -->
-                <g class="vane__needle">
-                  <path d="M74 70 H180" stroke="var(--amber)" stroke-width="6" stroke-linecap="round" />
-                  <path d="M204 70 L176 55 L176 85 Z" fill="var(--amber)" />
-                  <path d="M74 66 L50 58 L64 70 L50 82 L74 74 Z" fill="var(--amber)" />
-                </g>
-                <circle cx="130" cy="70" r="6.5" fill="var(--amber-deep)" />
-                <circle cx="130" cy="70" r="3" fill="var(--amber-bright)" />
-              </svg>
+              <img class="vane__mark" src="logomark.png" alt="" width="320" height="320" />
               <p class="vane__caption">Points sellers straight to a number.</p>
             </div>
-            <!-- ===== /HERO weathervane illustration (swap point) ===== -->
           </div>
         </div>
       </section>
