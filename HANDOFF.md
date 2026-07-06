@@ -83,7 +83,43 @@ Problem (doorway-light SVG) · How it works (sunset SVG) · The math (formula + 
 Tune the offer (scroll-tied ARV slider, 50/90/70 swing) · Easy install (ID typewriter) ·
 Pricing · Founder · Early access · Final CTA.
 
+## Trial signup flow (Phase 1, concierge)
+- `/trial/` signup page + `/trial/thanks/` confirmation, both matching the site's
+  design system (mono uppercase labels, gold-dot required markers, dark inputs
+  with gold focus, founding-member reassurance card). Vite is now multi-page
+  (see `vite.config.js` rollup inputs).
+- All five CTAs point at `trial/?src=header|hero|pricing|testimonials|final`
+  (`data-cta` attributes match the src values). Hero's secondary CTA still
+  anchors to `#math`.
+- `src/trial.js`: reads `?src`, validates inline (gold errors, focus first bad
+  field, errors clear on input), POSTs JSON to the signup worker, redirects to
+  `thanks/`. Network failure shows a form-level error and re-enables the button.
+- Form endpoint: `worker/offervane-signup.js`, a Cloudflare Worker. Stores every
+  signup in the `offervane-signups` KV namespace FIRST, then best-effort emails
+  Michael via Resend (log-only until the `RESEND_API_KEY` secret is set; a
+  signup is never lost either way). Hidden `phone` honeypot: bot submissions are
+  stored under a `spam:` prefix and never emailed. CORS locked to the real
+  origins. See `worker/README.md`.
+- **Worker is NOT deployed yet.** Provisioning new infra on the Cloudflare
+  account needs Michael's go-ahead. To deploy:
+  `source ~/truecatholic/.env && ./worker/deploy.sh` (idempotent), then
+  optionally `npx wrangler secret put RESEND_API_KEY --name offervane-signup`
+  (type the key at the prompt). Endpoint URL, already baked into `src/trial.js`:
+  `https://offervane-signup.truecatholicai.workers.dev/`
+  (the workers.dev subdomain is `truecatholicai`; only visible in devtools, but
+  flagged in case Michael wants a separate OfferVane Cloudflare account).
+- `public/sitemap.xml` lists `/` and `/trial/`. Deploys still write a
+  disallow-all robots.txt while DNS is parked, so nothing is indexable yet;
+  the noindex flip happens once the domain and the endpoint are both live.
+- Verification: `scripts/verify-trial.mjs` (gitignored) runs 15 Playwright
+  checks against a local `dist/` serve on :4321, mocking the worker endpoint.
+
 ## Open / optional (not done)
+- **Run `worker/deploy.sh`** (needs Michael's OK) and set `RESEND_API_KEY` to
+  turn on the signup notification email. Until then the live form would show
+  its error state on submit.
+- Prospect auto-reply email: waits for offervane.com DNS + domain verification
+  in Resend (sender identity). The thanks page carries the promise meanwhile.
 - User may upload an icon variant with **a dollar sign on the back of the arrow** → re-swap logo + favicon.
 - **`og.png` social card still shows the OLD weathervane** — not regenerated with the new icon.
 - Logo is raster; could **trace/redraw as vector** if crispness/recolorability matters.
