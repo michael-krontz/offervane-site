@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0C0B09" />
+
+    <title>OfferVane · Start your free trial</title>
+    <meta
+      name="description"
+      content="Start your OfferVane founding-member trial. Tell us where the widget is going and Michael will personally set up your widget and dashboard access within 24 hours."
+    />
+    <link rel="canonical" href="https://offervane.com/trial/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="OfferVane" />
+    <meta property="og:title" content="OfferVane · Start your free trial" />
+    <meta
+      property="og:description"
+      content="Founding-member trial. First month free, no card required, set up personally by the founder within 24 hours."
+    />
+    <meta property="og:url" content="https://offervane.com/trial/" />
+    <meta property="og:image" content="https://offervane.com/og.png" />
+
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+
+    <script type="module" crossorigin src="../assets/trial-DMRs5GOr.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/main-CiwFIALc.js">
+    <link rel="stylesheet" crossorigin href="../assets/main-DrqIiq6s.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#trial-form">Skip to the form</a>
+
+    <!-- ============================ NAV ============================ -->
+    <!-- Same nav as the homepage, minus the trial CTA (you're already here). -->
+    <header class="nav" id="top">
+      <div class="nav__inner">
+        <a class="brand" href="../" aria-label="OfferVane home">
+          <span class="brand__mark" aria-hidden="true">
+            <img class="logomark" src="../logomark.png" width="34" height="34" alt="" />
+          </span>
+          <span class="brand__word">Offer<span class="brand__vane">Vane</span></span>
+        </a>
+
+        <nav class="nav__links" aria-label="Primary">
+          <a href="../#how">How it works</a>
+          <a href="../#math">The math</a>
+          <a href="../#pricing">Pricing</a>
+          <a href="../#founder">Founder</a>
+        </nav>
+
+        <button class="nav__toggle" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="section trialpage">
+        <div class="wrap trial">
+          <!-- left: the form -->
+          <div class="trial__main">
+            <p class="eyebrow reveal">Founding member trial</p>
+            <h1 class="trial__h reveal" data-delay="1">Start your free trial.</h1>
+            <p class="section__lede reveal" data-delay="2">
+              Tell me a little about your operation and where the widget is going.
+              I'll personally reach out within 24 hours to get you set up with your
+              widget and dashboard access.
+            </p>
+
+            <form class="trialform reveal" data-delay="3" id="trial-form" novalidate>
+              <div class="fld">
+                <label class="fld__label" for="f-name">
+                  Full name <span class="fld__req" aria-hidden="true"></span>
+                </label>
+                <input id="f-name" name="name" type="text" autocomplete="name"
+                  aria-required="true" aria-describedby="f-name-err" maxlength="200" />
+                <p class="fld__err" id="f-name-err" hidden>Add your name.</p>
+              </div>
+
+              <div class="fld">
+                <label class="fld__label" for="f-email">
+                  Email <span class="fld__req" aria-hidden="true"></span>
+                </label>
+                <input id="f-email" name="email" type="email" autocomplete="email"
+                  placeholder="you@yourcompany.com"
+                  aria-required="true" aria-describedby="f-email-err" maxlength="200" />
+                <p class="fld__err" id="f-email-err" hidden>That email doesn't look right.</p>
+              </div>
+
+              <div class="fld">
+                <label class="fld__label" for="f-business">
+                  Business name <span class="fld__req" aria-hidden="true"></span>
+                </label>
+                <input id="f-business" name="business" type="text" autocomplete="organization"
+                  placeholder="Heartland Home Buyers"
+                  aria-required="true" aria-describedby="f-business-err" maxlength="200" />
+                <p class="fld__err" id="f-business-err" hidden>Add your business name.</p>
+              </div>
+
+              <div class="fld">
+                <label class="fld__label" for="f-website">
+                  Website <span class="fld__req" aria-hidden="true"></span>
+                  <em class="fld__hint">where the widget will live</em>
+                </label>
+                <input id="f-website" name="website" type="text" inputmode="url" autocomplete="url"
+                  placeholder="yourcompany.com"
+                  aria-required="true" aria-describedby="f-website-err" maxlength="300" />
+                <p class="fld__err" id="f-website-err" hidden>Add the site where the widget will go.</p>
+              </div>
+
+              <div class="fld">
+                <label class="fld__label" for="f-market">
+                  Typical deal size and market <em class="fld__hint">optional, helps me set you up faster</em>
+                </label>
+                <textarea id="f-market" name="market" rows="3" maxlength="2000"
+                  placeholder="Single-family flips around Indianapolis, $150k to $300k ARV"></textarea>
+              </div>
+
+              <!-- honeypot: humans never see this; bots fill it -->
+              <div class="hp" aria-hidden="true">
+                <label for="f-phone">Phone</label>
+                <input id="f-phone" name="phone" type="text" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <input type="hidden" name="src" value="" />
+
+              <p class="trialform__error" role="alert" hidden>
+                Something went wrong sending this. Please try again in a minute.
+              </p>
+
+              <button class="btn btn--amber btn--lg btn--block" type="submit">Start free trial</button>
+              <p class="trialform__fine">First month free · No card required · Cancel anytime</p>
+            </form>
+          </div>
+
+          <!-- right: honest reassurance, no dark patterns -->
+          <aside class="trial__aside reveal" data-delay="4">
+            <div class="asidecard">
+              <p class="asidecard__tag">You're one of the first</p>
+              <h2 class="asidecard__h">Which means:</h2>
+              <ul class="asidecard__list">
+                <li>You talk to me, not a support queue.</li>
+                <li>Your feedback shapes the next release.</li>
+                <li>Founding-member pricing is locked while we're new.</li>
+              </ul>
+              <p class="asidecard__fine">
+                One plan: $500/mo after your free month. No tiers, no upsells, no per-lead fees.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================ FOOTER (slim) ============================ -->
+    <footer class="footer footer--slim">
+      <div class="wrap footer__base">
+        <span>© 2026 OfferVane</span>
+        <span>Pre-launch · Founding members welcome</span>
+      </div>
+    </footer>
+  </body>
+</html>
